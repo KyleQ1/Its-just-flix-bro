@@ -1,0 +1,18 @@
+{
+  "name": "express-backend",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/backend.js",
+  "scripts": {
+    "test": "node src/backend.test.js",
+    "dev": "npx nodemon src/backend.js",
+    "start": "node src/backend.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "mongoose": "^7.6.3"
+  }
+}
