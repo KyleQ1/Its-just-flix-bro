@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema(
       {
         movie: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Movie", // Assuming you have a separate Movie schema
+          ref: "Movie",
         },
       },
     ],
@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema(
       {
         review: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Review", // Assuming you have a separate Review schema
+          ref: "Review",
         },
       },
     ],
