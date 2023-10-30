@@ -4,10 +4,12 @@
 
 div {
     min-height: 100vh;
-    background-color: gray;
+    background-color: wheat;
 }
 
 img {
-    width: 75px;
+    width: 50px;
     height: auto;
 }
+
+
