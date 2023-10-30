@@ -7,14 +7,18 @@ function App() {
   return (
     <div>
       <header>
-        <p>
           <img src={logo} align="left"/>
           <img src={accountIcon} align="right"/>
           <img src={search} align="right"/>
-          <center><b><h2>This is the header</h2></b></center>
-        </p>
-        <hr></hr>
       </header>
+      <table width="30%">
+            <tr>
+              <td width="20%">Home</td>
+              <td>TV Shows</td>
+              <td width="20%">Movies</td>
+              <td>My List</td>
+            </tr>
+          </table>
     </div>
   );
 }

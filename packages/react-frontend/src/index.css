@@ -5,6 +5,7 @@
 div {
     min-height: 100vh;
     background-color: wheat;
+    padding-top: 10px;
 }
 
 img {
@@ -12,4 +13,14 @@ img {
     height: auto;
 }
 
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: 100px;
+    margin-top: 10px;
+}
 
+td {
+    font-size: larger;
+}
