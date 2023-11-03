@@ -1,15 +1,15 @@
 import express from "express";
-import Review from "../models/review.js"; 
-import Movie from "../models/movie.js"; 
-import User from "../models/user.js"; 
+import Review from "../models/review.js";
+import Movie from "../models/movie.js";
+import User from "../models/user.js";
 
 const router = express.Router();
 
 // Create Review Endpoint (POST)
-router.post("/reviews", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { movieId, userId, reviewText, reviewTitle, rating } = req.body;
-    
+
     // Check if movie and user exist
     const movie = await Movie.findById(movieId);
     const user = await User.findById(userId);
@@ -34,7 +34,7 @@ router.post("/reviews", async (req, res) => {
 });
 
 // Delete Review Endpoint (DELETE)
-router.delete("/reviews/:reviewId", async (req, res) => {
+router.delete("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
     const review = await Review.findByIdAndDelete(reviewId);
@@ -48,10 +48,12 @@ router.delete("/reviews/:reviewId", async (req, res) => {
 });
 
 // Get Review Endpoint (GET)
-router.get("/reviews/:reviewId", async (req, res) => {
+router.get("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
-    const review = await Review.findById(reviewId).populate("movie").populate("user");
+    const review = await Review.findById(reviewId)
+      .populate("movie")
+      .populate("user");
     if (!review) {
       return res.status(404).json({ error: "Review not found" });
     }

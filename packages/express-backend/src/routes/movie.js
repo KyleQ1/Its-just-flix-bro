@@ -5,7 +5,7 @@ import Review from "../models/review.js"; // Import the Review model if it's not
 const router = express.Router();
 
 // Create Movie Endpoint (POST)
-router.post("/movies", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { title, description, image, genres } = req.body;
     const movie = new Movie({ title, description, image, genres });
@@ -17,7 +17,7 @@ router.post("/movies", async (req, res) => {
 });
 
 // Delete Movie Endpoint (DELETE)
-router.delete("/movies/:movieId", async (req, res) => {
+router.delete("/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   try {
     const movie = await Movie.findByIdAndDelete(movieId);
@@ -33,7 +33,7 @@ router.delete("/movies/:movieId", async (req, res) => {
 });
 
 // Get Movie Endpoint (GET)
-router.get("/movies/:movieId", async (req, res) => {
+router.get("/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   try {
     const movie = await Movie.findById(movieId).populate("reviews.review");

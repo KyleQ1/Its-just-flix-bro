@@ -2,7 +2,7 @@ import express from "express";
 import User from "../models/user.js"; 
 const router = express.Router();
 
-router.post("/users", async (req, res) => {
+router.post("/", async (req, res) => {
     try {
       const { username, password } = req.body;
       const user = new User({ username, password });
@@ -13,7 +13,7 @@ router.post("/users", async (req, res) => {
     }
   });
 
-  router.delete("/users/:userId", async (req, res) => {
+  router.delete("/:userId", async (req, res) => {
     const userId = req.params.userId;
     try {
       const user = await User.findByIdAndDelete(userId);
@@ -26,7 +26,7 @@ router.post("/users", async (req, res) => {
     }
   });
 
-  router.get("/users/:userId", async (req, res) => {
+  router.get("/:userId", async (req, res) => {
     const userId = req.params.userId;
     try {
       const user = await User.findById(userId).populate("watchlist.movie").populate("reviews.review");
