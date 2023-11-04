@@ -15,6 +15,7 @@
 :root {
     --bg-color: wheat;
     --fg-color: black;
+    overflow-x: hidden;
 }
 
 a {
@@ -28,7 +29,7 @@ a {
     padding-top: 10px;
 }
 
-img {
+#nav-bar-img {
     width: 50px;
     height: 100%;
 }
@@ -75,9 +76,25 @@ td {
     margin-right: 20px;
 }
 
-h1 {
-    margin: 0;
-    /* to be removed */
+#movie-list {
+    display: flex;
+    column-gap: 10px;
+}
+
+#movie-img {
+    width: 200px;
+    height: 100%;
+}
+
+#movie-genre {
+    display: flex;
+    margin-left: 20px;
+}
+
+#movie-genre > h1 {
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 400;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');

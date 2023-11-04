@@ -7,7 +7,7 @@ function NavBar() {
     return(
         <div id="header">
             <div id="logo-bar">
-                <img src={logo} alt="Netflix logo"/>
+                <img id="nav-bar-img" src={logo} alt="Netflix logo"/>
                 <div id="nav-bar">
                     <a href="#">Home</a>
                     <a href="#">Movies</a>
@@ -16,8 +16,8 @@ function NavBar() {
                 </div>
             </div>
             <div id="search-and-account">
-                <img src={search} alt="Search icon"/>
-                <img src={accountIcon} alt="Account icon"/>
+                <img id="nav-bar-img" src={search} alt="Search icon"/>
+                <img id="nav-bar-img" src={accountIcon} alt="Account icon"/>
             </div>
         </div>
     )
