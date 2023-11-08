@@ -26,7 +26,7 @@ const movieSchema = new mongoose.Schema(
       },
     ],
   },
-  { collection: "Movies" }
+  { collection: "Movies" },
 );
 
 const Movie = mongoose.model("Movie", movieSchema);
