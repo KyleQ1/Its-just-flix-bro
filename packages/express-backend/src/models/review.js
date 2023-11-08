@@ -27,7 +27,7 @@ const reviewSchema = new mongoose.Schema(
       max: 5,
     },
   },
-  { collection: "Reviews" }
+  { collection: "Reviews" },
 );
 
 const Review = mongoose.model("Review", reviewSchema);
