@@ -1,7 +1,7 @@
 import React from "react";
 import movie from "./assets/netflix-logo.png"
 
-function Movie(props) {
+function MovieList(props) {
     let genre = props.genre;
     return (
         <div>
@@ -25,4 +25,4 @@ function Movie(props) {
 }
 
 
-export default Movie;
+export default MovieList;

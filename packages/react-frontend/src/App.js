@@ -1,15 +1,24 @@
 import "./index.css";
 import NavBar from "./NavBar";
-import Movie from "./Movie"
+import MovieList from "./MovieList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProfilePage from "./ProfilePage";
 
 function App() {
   return (
-    <div id="landing">
-      <NavBar />
-      <Movie genre="Action"/>
-      <Movie genre="Comedy"/>
-      <Movie genre="Horror"/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="" element={
+          <div id="landing">
+            <NavBar />
+            <MovieList genre="Action"/>
+            <MovieList genre="Comedy"/>
+            <MovieList genre="Horror"/>
+          </div>
+        }/>
+        <Route path="profile" element={<ProfilePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
