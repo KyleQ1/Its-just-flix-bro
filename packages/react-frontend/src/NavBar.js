@@ -10,7 +10,7 @@ function NavBar() {
             <div id="logo-bar">
                 <img id="nav-bar-img" src={logo} alt="Netflix logo"/>
                 <div id="nav-bar">
-                    <a href="#">Home</a>
+                    <a href="">Home</a>
                     <a href="#">Movies</a>
                     <a href="#">TV Shows</a>
                     <a href="#">My List</a>

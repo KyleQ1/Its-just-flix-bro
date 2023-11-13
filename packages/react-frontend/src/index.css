@@ -13,7 +13,7 @@
  */
 
 :root {
-    --bg-color: wheat;
+    --bg-color: gray;
     --fg-color: black;
     overflow-x: hidden;
 }
@@ -78,7 +78,7 @@ td {
 
 #movie-list {
     display: flex;
-    column-gap: 10px;
+    column-gap: 20px;
 }
 
 #movie-img {
@@ -95,6 +95,70 @@ td {
     font-size: 24px;
     font-family: "Public Sans";
     font-weight: 400;
+}
+
+#username {
+    display: flex;
+    margin: auto 40px;
+}
+
+#username > h2 {
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 300
+}
+
+#exit {
+    display: flex;
+    margin: auto 20px;
+    padding: 3px;
+    background-color: black;
+}
+
+#exit-img {
+    width: 30px;
+    height: auto;
+}
+
+#filler {
+    display: flex;
+    margin: 10px;
+}
+
+#watchlist {
+    display: flex;
+    margin: auto 20px;
+    flex-direction: column;
+}
+
+#watchlist > h2 {
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 400
+}
+
+#watchlist-movies {
+    display: flex;
+    margin: auto 20px;
+    column-gap: 20px;
+}
+
+#review-list {
+    display: flex;
+    flex-direction: column;
+    margin: auto 20px;
+}
+
+#review-list > h2 {
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 400
+}
+
+#reviews {
+    display: flex;
+    margin: auto 20px;
+    flex-direction: column;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
