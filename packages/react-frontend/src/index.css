@@ -99,7 +99,7 @@ td {
 
 #username {
     display: flex;
-    margin: auto 40px;
+    margin: 20px 20px;
 }
 
 #username > h2 {

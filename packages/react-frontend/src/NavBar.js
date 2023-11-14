@@ -8,7 +8,7 @@ function NavBar() {
     return(
         <div id="header">
             <div id="logo-bar">
-                <img id="nav-bar-img" src={logo} alt="Netflix logo"/>
+                <Link to={"/"}><img id="nav-bar-img" src={logo} alt="Netflix logo"/></Link>
                 <div id="nav-bar">
                     <a href="">Home</a>
                     <a href="#">Movies</a>
