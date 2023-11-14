@@ -1,5 +1,5 @@
 import React from "react";
-import movie from "./assets/netflix-logo.png"
+import movie from "./assets/netflix-logo.png";
 
 function MovieList(props) {
     let genre = props.genre;

@@ -21,8 +21,7 @@ function NavBar() {
                 <Link to={"/profile"}><img id="nav-bar-img" src={accountIcon} alt="Account icon"/></Link>
             </div>
         </div>
-    )
-    
+  );
 }
 
-export default NavBar
+export default NavBar;
