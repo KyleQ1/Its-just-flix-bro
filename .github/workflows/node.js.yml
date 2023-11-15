@@ -44,5 +44,4 @@ jobs:
     - run: cd packages/express-backend
     - run: npm ci
     - run: npm run start --if-present
-
-    - run: npm test
+    - run: npm run test
