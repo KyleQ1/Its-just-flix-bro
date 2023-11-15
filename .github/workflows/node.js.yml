@@ -8,9 +8,10 @@ on:
 
 jobs:
   frontend-build:
-
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: packages/react-frontend
     strategy:
       matrix:
         node-version: [18.x, 20.x]
@@ -22,14 +23,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd packages/react-frontend
     - run: npm ci
     - run: npm run build --if-present
 
   backend-build:
 
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: packages/express-backend
     strategy:
       matrix:
         node-version: [18.x, 20.x]
@@ -41,7 +43,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd packages/express-backend
     - run: npm ci
     - run: npm run start --if-present
     - run: npm run test
