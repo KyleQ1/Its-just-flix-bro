@@ -1,12 +1,13 @@
 import React from "react";
 import movie from "./assets/netflix-logo.png";
+import { Link } from "react-router-dom";
 
 function MovieList(props) {
     let genre = props.genre;
     return (
         <div>
             <div id="movie-genre">
-                <h1 id="genre">{genre}</h1>
+                <Link to={"/movie"}><h1 id="genre">{genre}</h1></Link>
             </div>
             {/* imgs are temporary */}
             <div id="movie-list">

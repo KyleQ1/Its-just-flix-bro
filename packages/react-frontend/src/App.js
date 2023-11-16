@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import MovieList from "./MovieList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfilePage from "./ProfilePage";
+import MovieReviewPage from "./MovieReviewPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           </div>
         }/>
         <Route path="profile" element={<ProfilePage />} />
+        <Route path="movie" element={<MovieReviewPage />} />
       </Routes>
     </BrowserRouter>
   );
