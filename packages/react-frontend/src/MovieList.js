@@ -2,13 +2,14 @@ import React from "react";
 import movie from "./assets/netflix-logo.png";
 import accountIcon from "./assets/account-icon.png";
 import MovieCard from "./MovieCard";
+import { Link } from "react-router-dom";
 
 function MovieList(props) {
   let genre = props.genre;
   return (
     <div>
       <div id="movie-genre">
-        <h1 id="genre">{genre}</h1>
+        <Link to={"/movie"}><h1 id="genre">{genre}</h1></Link>
       </div>
       <div id="movie-list">
         <MovieCard title="Blazing Saddles" image={movie} id="testid" />
