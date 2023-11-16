@@ -13,9 +13,19 @@ const movieSchema = new mongoose.Schema(
     },
     image: {
       type: String, // image URL
+      required: true,
     },
     genres: {
       type: [String], // array of genres
+      required: true,
+    },
+    popularity: {
+      type: Number,
+      required: true,
+    },
+    releaseDate: {
+      type: String,
+      required: true,
     },
     reviews: [
       {
@@ -26,7 +36,7 @@ const movieSchema = new mongoose.Schema(
       },
     ],
   },
-  { collection: "Movies" },
+  { collection: "Movies" }
 );
 
 const Movie = mongoose.model("Movie", movieSchema);
