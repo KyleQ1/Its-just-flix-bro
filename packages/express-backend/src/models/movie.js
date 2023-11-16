@@ -19,6 +19,14 @@ const movieSchema = new mongoose.Schema(
       type: [String], // array of genres
       required: true,
     },
+    popularity: {
+      type: Number,
+      required: true,
+    },
+    releaseDate: {
+      type: String,
+      required: true,
+    },
     reviews: [
       {
         review: {
