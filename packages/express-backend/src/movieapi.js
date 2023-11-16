@@ -39,7 +39,7 @@ function filterMoviesByEnglish(movies) {
   return movies.filter((movie) => movie.original_language === "en");
 }
 
-function postMovie(tit, desc, img, genre) {
+function postMovie(tit, desc, img, genre, pop, release) {
   fetch("http://localhost:8000/movie", {
     method: "POST",
     body: JSON.stringify({
@@ -47,6 +47,8 @@ function postMovie(tit, desc, img, genre) {
       description: desc,
       images: img,
       genres: genre,
+      popularity: pop,
+      release_date: release,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -54,23 +56,70 @@ function postMovie(tit, desc, img, genre) {
   });
 }
 
+// Adds full url to backdrop image path given
+function appendFullURL(url) {
+  return "https://image.tmdb.org/t/p/original/" + url
+}
+
+function mapGenreIdsToNames(genreIDs) {
+  const genres = {"genres":
+    [{"id":28,"name":"Action"},
+    {"id":12,"name":"Adventure"},
+    {"id":16,"name":"Animation"},
+    {"id":35,"name":"Comedy"},
+    {"id":80,"name":"Crime"},
+    {"id":99,"name":"Documentary"},
+    {"id":18,"name":"Drama"},
+    {"id":10751,"name":"Family"},
+    {"id":14,"name":"Fantasy"},
+    {"id":36,"name":"History"},
+    {"id":27,"name":"Horror"},
+    {"id":10402,"name":"Music"},
+    {"id":9648,"name":"Mystery"},
+    {"id":10749,"name":"Romance"},
+    {"id":878,"name":"Science Fiction"},
+    {"id":10770,"name":"TV Movie"},
+    {"id":53,"name":"Thriller"},
+    {"id":10752,"name":"War"},
+    {"id":37,"name":"Western"}
+  ]}
+  
+  genreNames;
+  genreIDs.map((id) => {
+    genres.genres.map((genre) => {
+      if (genre.id === id) {
+        genreNames.push(genre.name);
+      }
+    })
+  });
+  return genreNames;
+}
+
+function getMovieParameters(movie) {
+  return (movie.title, 
+    movie.overview, appendFullURL(movie.backdrop_path), 
+    mapGenreIdsToNames(movie.genreIDs), movie.popularity, 
+    movie.release_date)
+}
+
+// TODO: Check if movies are already in the database 
 async function updateMovies() {
-  for (let i = 1; i < 10; i++) {
-    let popmovies = await getPopularMovies(i);
-    popmovies = filterMoviesByEnglish(popmovies.results);
-    postMovie()
+  for (let i = 1; i <= 1; i++) {
+    let popMovies = await getPopularMovies(i);
+    popMovies = filterMoviesByEnglish(popMovies.results);
+    popMovies.map((movie) => postMovie(getMovieParameters(movie)));
 
     let topMovies = await getTopMovies(i);
     topMovies = filterMoviesByEnglish(topMovies.results);
-    movies.push(topMovies);
+    topMovies.map((movie) => postMovie(getMovieParameters(movie)));
 
     let topTVShows = await getTopTVShows(i);
     topTVShows = filterMoviesByEnglish(topTVShows.results);
-    movies.push(topTVShows);
+    topTVShows.map((movie) => postMovie(getMovieParameters(movie)));
   }
-  return true
 }
 
 updateMovies()
   .then()
   .catch((e) => console.error(e));
+
