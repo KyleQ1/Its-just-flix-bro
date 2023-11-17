@@ -41,32 +41,34 @@ function filterMoviesByEnglish(movies) {
 
 // Adds full url to backdrop image path given
 function appendFullURL(url) {
-  return "https://image.tmdb.org/t/p/original" + url
+  return "https://image.tmdb.org/t/p/original" + url;
 }
 
 function mapGenreIdsToNames(genreIDs) {
-  const genres = {"genres":
-    [{"id":28,"name":"Action"},
-    {"id":12,"name":"Adventure"},
-    {"id":16,"name":"Animation"},
-    {"id":35,"name":"Comedy"},
-    {"id":80,"name":"Crime"},
-    {"id":99,"name":"Documentary"},
-    {"id":18,"name":"Drama"},
-    {"id":10751,"name":"Family"},
-    {"id":14,"name":"Fantasy"},
-    {"id":36,"name":"History"},
-    {"id":27,"name":"Horror"},
-    {"id":10402,"name":"Music"},
-    {"id":9648,"name":"Mystery"},
-    {"id":10749,"name":"Romance"},
-    {"id":878,"name":"Science Fiction"},
-    {"id":10770,"name":"TV Movie"},
-    {"id":53,"name":"Thriller"},
-    {"id":10752,"name":"War"},
-    {"id":37,"name":"Western"}
-  ]}
-  
+  const genres = {
+    genres: [
+      { id: 28, name: "Action" },
+      { id: 12, name: "Adventure" },
+      { id: 16, name: "Animation" },
+      { id: 35, name: "Comedy" },
+      { id: 80, name: "Crime" },
+      { id: 99, name: "Documentary" },
+      { id: 18, name: "Drama" },
+      { id: 10751, name: "Family" },
+      { id: 14, name: "Fantasy" },
+      { id: 36, name: "History" },
+      { id: 27, name: "Horror" },
+      { id: 10402, name: "Music" },
+      { id: 9648, name: "Mystery" },
+      { id: 10749, name: "Romance" },
+      { id: 878, name: "Science Fiction" },
+      { id: 10770, name: "TV Movie" },
+      { id: 53, name: "Thriller" },
+      { id: 10752, name: "War" },
+      { id: 37, name: "Western" },
+    ],
+  };
+
   let genreNames = [];
   genreIDs.map((id) => {
     genres.genres.map((genre) => {
@@ -80,13 +82,13 @@ function mapGenreIdsToNames(genreIDs) {
 
 function getMovieJSON(movie) {
   return JSON.stringify({
-    "title": movie.title,
-    "description": movie.overview,
-    "image": appendFullURL(movie.backdrop_path),
-    "genres": mapGenreIdsToNames(movie.genre_ids),
-    "popularity": movie.popularity,
-    "releaseDate": movie.release_date,
-  })
+    title: movie.title,
+    description: movie.overview,
+    image: appendFullURL(movie.backdrop_path),
+    genres: mapGenreIdsToNames(movie.genre_ids),
+    popularity: movie.popularity,
+    releaseDate: movie.release_date,
+  });
 }
 
 function postMovie(movie) {
@@ -99,7 +101,7 @@ function postMovie(movie) {
   });
 }
 
-// TODO: Check if movies are already in the database 
+// TODO: Check if movies are already in the database
 async function updateMovies() {
   for (let i = 1; i <= 20; i++) {
     let popMovies = await getPopularMovies(i);
