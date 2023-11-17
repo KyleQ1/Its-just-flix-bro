@@ -29,8 +29,7 @@ function ProfilePage() {
                 </div>
             </div>
         </div>
-        
-    );
+  );
 }
 
-export default ProfilePage
+export default ProfilePage;

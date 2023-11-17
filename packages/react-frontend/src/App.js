@@ -9,14 +9,17 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="" element={
-          <div id="landing">
-            <NavBar />
-            <MovieList genre="Action"/>
-            <MovieList genre="Comedy"/>
-            <MovieList genre="Horror"/>
-          </div>
-        }/>
+        <Route
+          path=""
+          element={
+            <div id="landing">
+              <NavBar />
+              <MovieList genre="Action" />
+              <MovieList genre="Comedy" />
+              <MovieList genre="Horror" />
+            </div>
+          }
+        />
         <Route path="profile" element={<ProfilePage />} />
         {/* for loop num of routes from database */}
         <Route path="movie" element={<MovieReviewPage />} />
