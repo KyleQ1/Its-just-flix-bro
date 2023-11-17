@@ -22,7 +22,7 @@ function MovieReviewPage(props) {
                     <h3 id="description">description</h3>
                     <h3 id="release">release date</h3>
                 </div>
-                <div id="reviews">
+                <div id="movie-reviews">
                     <h1>Review</h1>
                 </div>
             </div>

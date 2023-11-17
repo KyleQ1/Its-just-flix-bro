@@ -1,4 +1,5 @@
 import Header from "./Header";
+import "./ProfilePage.css"
 
 function ProfilePage() {
     return (
