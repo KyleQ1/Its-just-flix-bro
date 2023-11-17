@@ -26,7 +26,7 @@ a {
 #landing {
   min-height: 100vh;
   background-color: var(--bg-color);
-  padding-top: 10px;
+  /* padding-top: 10px; */
 }
 
 #nav-bar-img {

@@ -1,0 +1,65 @@
+#movie-background {
+    display: flex;
+    justify-content: space-between;
+    background-color: bisque;
+    height: 70vh;
+    flex-direction: column;
+}
+
+#movie-background > h2 {
+    position: relative;
+    bottom: 100px;
+    left: 100px;
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 400;
+}
+
+#review-body {
+    display: flex;
+    background-color: gray;
+    flex-wrap: wrap;
+    height: 80vh;
+}
+
+#movie-info {
+    display: flex;
+    background-color: cadetblue;
+    flex-wrap: wrap;
+    height: 20vh;
+    width: 100%;
+}
+
+#popularity {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40vw;
+}
+
+#description {
+    display: flex;
+    margin: 30px 60px;
+}
+
+#genre {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 50%;
+    margin-bottom: 10px;
+}
+
+#release {
+    display: flex;
+    margin-left: 75%;
+    margin-top: 0%;
+}
+
+#reviews {
+    display: flex;
+    background-color: aquamarine;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

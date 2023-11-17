@@ -18,6 +18,7 @@ function App() {
           </div>
         }/>
         <Route path="profile" element={<ProfilePage />} />
+        {/* for loop num of routes from database */}
         <Route path="movie" element={<MovieReviewPage />} />
       </Routes>
     </BrowserRouter>

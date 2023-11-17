@@ -9,7 +9,7 @@ function MovieList(props) {
   return (
     <div>
       <div id="movie-genre">
-        <Link to={"/movie"}><h1 id="genre">{genre}</h1></Link>
+        <Link to={"/movie"}><h1>{genre}</h1></Link>
       </div>
       <div id="movie-list">
         <MovieCard title="Blazing Saddles" image={movie} id="testid" />
