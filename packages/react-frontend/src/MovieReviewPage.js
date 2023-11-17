@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import "./MovieReviewPage.css"
+import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
     return (
@@ -28,7 +28,7 @@ function MovieReviewPage(props) {
                 </div>
             </div>
         </div>
-    );
+  );
 }
 
-export default MovieReviewPage
+export default MovieReviewPage;
