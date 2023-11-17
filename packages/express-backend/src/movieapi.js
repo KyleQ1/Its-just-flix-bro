@@ -39,26 +39,9 @@ function filterMoviesByEnglish(movies) {
   return movies.filter((movie) => movie.original_language === "en");
 }
 
-function postMovie(tit, desc, img, genre, pop, release) {
-  fetch("http://localhost:8000/movie", {
-    method: "POST",
-    body: JSON.stringify({
-      title: tit,
-      description: desc,
-      images: img,
-      genres: genre,
-      popularity: pop,
-      release_date: release,
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-}
-
 // Adds full url to backdrop image path given
 function appendFullURL(url) {
-  return "https://image.tmdb.org/t/p/original/" + url
+  return "https://image.tmdb.org/t/p/original" + url
 }
 
 function mapGenreIdsToNames(genreIDs) {
@@ -84,42 +67,55 @@ function mapGenreIdsToNames(genreIDs) {
     {"id":37,"name":"Western"}
   ]}
   
-  genreNames;
+  let genreNames = [];
   genreIDs.map((id) => {
     genres.genres.map((genre) => {
       if (genre.id === id) {
         genreNames.push(genre.name);
       }
-    })
+    });
   });
   return genreNames;
 }
 
-function getMovieParameters(movie) {
-  return (movie.title, 
-    movie.overview, appendFullURL(movie.backdrop_path), 
-    mapGenreIdsToNames(movie.genreIDs), movie.popularity, 
-    movie.release_date)
+function getMovieJSON(movie) {
+  return JSON.stringify({
+    "title": movie.title,
+    "description": movie.overview,
+    "image": appendFullURL(movie.backdrop_path),
+    "genres": mapGenreIdsToNames(movie.genre_ids),
+    "popularity": movie.popularity,
+    "releaseDate": movie.release_date,
+  })
+}
+
+function postMovie(movie) {
+  fetch("http://localhost:8000/movie", {
+    method: "POST",
+    body: getMovieJSON(movie),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
 }
 
 // TODO: Check if movies are already in the database 
 async function updateMovies() {
-  for (let i = 1; i <= 1; i++) {
+  for (let i = 1; i <= 20; i++) {
     let popMovies = await getPopularMovies(i);
     popMovies = filterMoviesByEnglish(popMovies.results);
-    popMovies.map((movie) => postMovie(getMovieParameters(movie)));
+    popMovies.map((movie) => postMovie(movie));
 
     let topMovies = await getTopMovies(i);
     topMovies = filterMoviesByEnglish(topMovies.results);
-    topMovies.map((movie) => postMovie(getMovieParameters(movie)));
+    topMovies.map((movie) => postMovie(movie));
 
     let topTVShows = await getTopTVShows(i);
     topTVShows = filterMoviesByEnglish(topTVShows.results);
-    topTVShows.map((movie) => postMovie(getMovieParameters(movie)));
+    topTVShows.map((movie) => postMovie(movie));
   }
 }
 
 updateMovies()
   .then()
   .catch((e) => console.error(e));
-
