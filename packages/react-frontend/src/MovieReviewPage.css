@@ -23,35 +23,48 @@
 }
 
 #movie-info {
-    display: flex;
+    display: grid;
     background-color: cadetblue;
-    flex-wrap: wrap;
     height: 20vh;
     width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
 }
 
 #popularity {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     width: 40vw;
 }
 
+#popularity > h4 {
+    margin: 0;
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 300;
+}
+
 #description {
-    display: flex;
-    margin: 30px 60px;
+    align-self: start;
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 300;
 }
 
 #genre {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-left: 50%;
-    margin-bottom: 10px;
+    align-self: end;
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 400;
 }
 
 #release {
-    display: flex;
-    margin-left: 75%;
-    margin-top: 0%;
+    align-self: start;
+    font-size: 24px;
+    font-family: "Public Sans";
+    font-weight: 400;
 }
 
 #movie-reviews {
@@ -60,6 +73,11 @@
     margin: 0;
     height: 100%;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+}
+
+#movie-reviews > button {
+    margin: 20px auto;
 }

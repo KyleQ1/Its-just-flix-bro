@@ -18,12 +18,13 @@ function MovieReviewPage(props) {
                         <h4>4</h4>
                         <h4>5</h4>
                     </div>
-                    <h3 id="genre">genre</h3>
-                    <h3 id="description">description</h3>
-                    <h3 id="release">release date</h3>
+                    <div id="genre">genre</div>
+                    <div id="description">description</div>
+                    <div id="release">release date</div>
                 </div>
                 <div id="movie-reviews">
                     <h1>Review</h1>
+                    <button>Submit</button>
                 </div>
             </div>
         </div>
