@@ -55,4 +55,22 @@ router.get("/:movieId", async (req, res) => {
   }
 });
 
+// Get movies by genre (GET)
+router.get("/genre/:genre", async (req, res) => {
+  try {
+    const genre = req.params.genre;
+
+    // Find movies with the specified genre
+    const movies = await Movie.find({ genres: genre });
+
+    if (movies.length === 0) {
+      return res.status(404).json({ message: "No movies found for the specified genre." });
+    }
+
+    res.json(movies);
+  } catch (error) {
+    console.error("Error fetching movies by genre:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 export default router;
