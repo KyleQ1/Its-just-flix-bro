@@ -24,7 +24,7 @@ function MovieReviewPage(props) {
         </div>
         <div id="movie-reviews">
           <h1>Review</h1>
-          <button>Submit</button>
+          <button>Submit Review</button>
         </div>
       </div>
     </div>
