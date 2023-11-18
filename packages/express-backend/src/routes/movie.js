@@ -64,7 +64,9 @@ router.get("/genre/:genre", async (req, res) => {
     const movies = await Movie.find({ genres: genre });
 
     if (movies.length === 0) {
-      return res.status(404).json({ message: "No movies found for the specified genre." });
+      return res
+        .status(404)
+        .json({ message: "No movies found for the specified genre." });
     }
 
     res.json(movies);
