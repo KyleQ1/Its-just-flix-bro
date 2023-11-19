@@ -1,0 +1,34 @@
+.my-carousel {
+    position: relative;
+  }
+  
+  .carousel-container {
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ease; /* Add smooth transition between slides */
+  }
+  
+  .carousel-slide {
+    box-sizing: border-box;
+  }
+  
+  .active {
+    opacity: 1;
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  button:first-child {
+    left: 10px;
+  }
+  
+  button:last-child {
+    right: 10px;
+  }
