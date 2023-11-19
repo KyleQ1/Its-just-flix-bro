@@ -41,7 +41,7 @@ function MovieList(props) {
         </Link>
       </div>
       <div id="movie-list">
-        <Carousel movies={movies}/>
+        <Carousel movies={movies} />
       </div>
     </div>
   );
