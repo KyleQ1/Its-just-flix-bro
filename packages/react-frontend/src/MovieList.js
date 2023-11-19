@@ -39,7 +39,7 @@ function MovieList(props) {
     <div>
       <div id="movie-genre">
         <Link to={"/movie"}>
-          <h1>{genre}</h1>
+          <h1>{props.genre}</h1>
         </Link>
       </div>
       <div id="movie-list">
