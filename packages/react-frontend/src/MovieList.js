@@ -15,7 +15,7 @@ function MovieList(props) {
         }
       })
       .then((json) => {
-        const randomSet = getRandomSubset(json, 8);
+        const randomSet = getRandomSubset(json, 35);
         setMovies(randomSet);
       })
       .catch((error) => {

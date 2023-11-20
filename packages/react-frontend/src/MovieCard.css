@@ -13,7 +13,7 @@
 
 .movie-image {
   width: 200px;
-  height: 140px;
+  height: var(--movie-height);
   border-radius: 8px;
 }
 

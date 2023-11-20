@@ -1,34 +1,41 @@
 .my-carousel {
-    position: relative;
-  }
+  position: relative;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 1s ease; /* Add smooth transition between slides */
+}
+
+.carousel-slides {
+  flex: 0 0 20%; /* Adjust based on the number of slides you want per page */
+  /* Add any other styles for your movie slides */
+}
+
+.my-carousel button {
+  background-color: transparent;
+  width: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+  height: var(--movie-height);
+}
+
+.my-carousel button .icon {
+  transform: scale(2);
+}
+
+.my-carousel button:disabled {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
   
-  .carousel-container {
-    display: flex;
-    max-width: 100%;
-    overflow: hidden;
-    transition: transform 0.3s ease; /* Add smooth transition between slides */
-  }
+.my-carousel button:first-child {
+  left: 1rem;
+}
   
-  .carousel-slide {
-    box-sizing: border-box;
-  }
-  
-  .active {
-    opacity: 1;
-  }
-  
-  button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  button:first-child {
-    left: 10px;
-  }
-  
-  button:last-child {
-    right: 10px;
-  }
+button:last-child {
+  right: 0rem;
+}
