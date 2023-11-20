@@ -1,6 +1,6 @@
 import express from "express";
-import Movie from "../models/movie.js"; // Adjust the path based on your project structure
-import Review from "../models/review.js"; // Import the Review model if it's not already imported
+import Movie from "../models/movie.js";
+import Review from "../models/review.js";
 
 const router = express.Router();
 
@@ -55,6 +55,36 @@ router.get("/:movieId", async (req, res) => {
   }
 });
 
+// Update Movie by ID Endpoint (PUT)
+router.put("/:movieId", async (req, res) => {
+  const movieId = req.params.movieId;
+  try {
+    const updatedMovieData = req.body;
+    const existingMovie = await Movie.findById(movieId);
+
+    if (!existingMovie) {
+      return res.status(404).json({ error: "Movie not found" });
+    }
+
+    existingMovie.title = updatedMovieData.title || existingMovie.title;
+    existingMovie.description =
+      updatedMovieData.description || existingMovie.description;
+    existingMovie.image = updatedMovieData.image || existingMovie.image;
+    existingMovie.genres = updatedMovieData.genres || existingMovie.genres;
+    existingMovie.popularity =
+      updatedMovieData.popularity || existingMovie.popularity;
+    existingMovie.releaseDate =
+      updatedMovieData.releaseDate || existingMovie.releaseDate;
+    existingMovie.reviews = updatedMovieData.reviews || existingMovie.reviews;
+
+    const updatedMovie = await existingMovie.save();
+
+    res.status(200).json(updatedMovie);
+  } catch (err) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // Get movies by genre (GET)
 router.get("/genre/:genre", async (req, res) => {
   try {
@@ -75,4 +105,5 @@ router.get("/genre/:genre", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
+
 export default router;
