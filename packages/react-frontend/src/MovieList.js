@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
+import Carousel from "./Carousel";
 import { Link } from "react-router-dom";
 
 function MovieList(props) {
@@ -11,13 +11,11 @@ function MovieList(props) {
         if (res.status === 404 || res.status === 500) {
           throw new Error(`GET failed, status code ${res.status}`);
         } else {
-          console.log(res);
           return res.json();
         }
       })
       .then((json) => {
-        console.log(json);
-        const randomSet = getRandomSubset(json, 4);
+        const randomSet = getRandomSubset(json, 35);
         setMovies(randomSet);
       })
       .catch((error) => {
@@ -43,9 +41,7 @@ function MovieList(props) {
         </Link>
       </div>
       <div id="movie-list">
-        {movies.map((movie) => (
-          <MovieCard title={movie.title} image={movie.image} id={movie._id} />
-        ))}
+        <Carousel movies={movies} />
       </div>
     </div>
   );

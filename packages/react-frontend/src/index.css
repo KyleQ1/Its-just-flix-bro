@@ -15,6 +15,7 @@
 :root {
     --bg-color: gray;
     --fg-color: black;
+    --movie-height: 140px;
     overflow-x: hidden;
 }
 
