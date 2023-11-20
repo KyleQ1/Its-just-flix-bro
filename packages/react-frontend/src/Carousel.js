@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 import MovieCard from "./MovieCard.js";
-import { ReactComponent as NextIcon } from "./assets/right-arrow.svg"
-import { ReactComponent as PreviousIcon } from "./assets/left-arrow.svg"
+import { ReactComponent as NextIcon } from "./assets/right-arrow.svg";
+import { ReactComponent as PreviousIcon } from "./assets/left-arrow.svg";
 
 const moviesPerPage = 7;
 
@@ -21,7 +21,9 @@ const Carousel = ({ movies }) => {
   }, [movies, currentSlide]);
 
   const goToNextSlide = () => {
-    setCurrentSlide((prevPage) => Math.min(prevPage + 1, Math.ceil(movies.length / moviesPerPage) - 1));
+    setCurrentSlide((prevPage) =>
+      Math.min(prevPage + 1, Math.ceil(movies.length / moviesPerPage) - 1),
+    );
   };
 
   const goToPrevSlide = () => {
@@ -30,14 +32,17 @@ const Carousel = ({ movies }) => {
 
   return (
     <div className="my-carousel">
-      <div className="carousel-container" 
-      style={{transform: `translateX(${-currentSlide * 100}%)`}}
+      <div
+        className="carousel-container"
+        style={{ transform: `translateX(${-currentSlide * 100}%)` }}
       >
         {displayedMovies.map((movie) => (
           <div
             key={movie._id}
             className={`carousel-slide`}
-            style={{transform: `translateX(${currentSlide * 100 * moviesPerPage}%)`}}
+            style={{
+              transform: `translateX(${currentSlide * 100 * moviesPerPage}%)`,
+            }}
           >
             <MovieCard title={movie.title} image={movie.image} id={movie._id} />
           </div>
