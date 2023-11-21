@@ -12,6 +12,6 @@ function HomePage() {
       <MovieList genre="Horror" />
     </div>
   );
-};
+}
 
 export default HomePage;
