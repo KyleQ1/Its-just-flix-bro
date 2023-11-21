@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "./NavBar";
-import MovieList from "./MovieList";
-import "./index.css";
+import NavBar from "../components/NavBar";
+import MovieList from "../components/MovieList";
+import "../index.css";
 
 function HomePage() {
   return (

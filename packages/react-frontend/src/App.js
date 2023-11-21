@@ -1,9 +1,9 @@
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./HomePage";
-import ProfilePage from "./ProfilePage";
-import MovieReviewPage from "./MovieReviewPage";
-import Login from "./Login";
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import MovieReviewPage from "./pages/MovieReviewPage";
+import Login from "./pages/LoginPage";
 
 function App() {
   const user = null;

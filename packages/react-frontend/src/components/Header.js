@@ -1,6 +1,6 @@
-import logo from "./assets/netflix.png";
+import logo from "../assets/netflix.png";
 import { Link } from "react-router-dom";
-import exit from "./assets/exit-icon.png";
+import exit from "../assets/exit-icon.png";
 import React from "react";
 import "./Header.css";
 

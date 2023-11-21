@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "./assets/netflix.png";
-import accountIcon from "./assets/account-icon.png";
-import search from "./assets/search-icon.png";
+import logo from "../assets/netflix.png";
+import accountIcon from "../assets/account-icon.png";
+import search from "../assets/search-icon.png";
 import { Link } from "react-router-dom";
 
 function NavBar() {
