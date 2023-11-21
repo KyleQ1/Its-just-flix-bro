@@ -16,6 +16,7 @@
     --bg-color: gray;
     --fg-color: black;
     --movie-height: 140px;
+    --movie-width: 200px;
     overflow-x: hidden;
 }
 
