@@ -44,7 +44,12 @@ const Carousel = ({ movies }) => {
               transform: `translateX(${currentSlide * 100 * moviesPerPage}%)`,
             }}
           >
-            <MovieCard title={movie.title} image={movie.image} genres={movie.genres} id={movie._id} />
+            <MovieCard
+              title={movie.title}
+              image={movie.image}
+              genres={movie.genres}
+              id={movie._id}
+            />
           </div>
         ))}
       </div>

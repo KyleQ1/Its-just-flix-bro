@@ -13,23 +13,24 @@ export default function MovieCard({ title, image, genres, id }) {
     setIsHovered(false);
   };
 
-
   return (
-    <div 
-    className="movie-card"
-    onMouseEnter={handleMouseEnter}
-    onMouseLeave={handleMouseLeave}
+    <div
+      className="movie-card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="movie-image">
         <Link to={`/movies/${id}`}>
           <img src={image} alt={title} />
         </Link>
       </div>
-      {isHovered &&  (
+      {isHovered && (
         <div className="movie-title">
-          <Link to={`/movies/${id}`} style={{color: `white`}}>{title}</Link>
+          <Link to={`/movies/${id}`} style={{ color: `white` }}>
+            {title}
+          </Link>
           <p>{genres.join(", ")}</p>
-      </div>
+        </div>
       )}
     </div>
   );
