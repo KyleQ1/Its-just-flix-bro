@@ -1,83 +1,83 @@
 #movie-background {
-    display: flex;
-    justify-content: space-between;
-    background-color: bisque;
-    height: 70vh;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  background-color: bisque;
+  height: 70vh;
+  flex-direction: column;
 }
 
 #movie-background > h2 {
-    position: relative;
-    bottom: 100px;
-    left: 100px;
-    font-size: 24px;
-    font-family: "Public Sans";
-    font-weight: 400;
+  position: relative;
+  bottom: 100px;
+  left: 100px;
+  font-size: 24px;
+  font-family: "Public Sans";
+  font-weight: 400;
 }
 
 #review-body {
-    display: flex;
-    background-color: gray;
-    flex-wrap: wrap;
-    height: 80vh;
+  display: flex;
+  background-color: gray;
+  flex-wrap: wrap;
+  height: 80vh;
 }
 
 #movie-info {
-    display: grid;
-    background-color: cadetblue;
-    height: 20vh;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    justify-items: center;
+  display: grid;
+  background-color: cadetblue;
+  height: 20vh;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
 }
 
 #popularity {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 40vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40vw;
 }
 
 #popularity > h4 {
-    margin: 0;
-    font-size: 24px;
-    font-family: "Public Sans";
-    font-weight: 300;
+  margin: 0;
+  font-size: 24px;
+  font-family: "Public Sans";
+  font-weight: 300;
 }
 
 #description {
-    align-self: start;
-    font-size: 24px;
-    font-family: "Public Sans";
-    font-weight: 300;
+  align-self: start;
+  font-size: 24px;
+  font-family: "Public Sans";
+  font-weight: 300;
 }
 
 #genre {
-    align-self: end;
-    font-size: 24px;
-    font-family: "Public Sans";
-    font-weight: 400;
+  align-self: end;
+  font-size: 24px;
+  font-family: "Public Sans";
+  font-weight: 400;
 }
 
 #release {
-    align-self: start;
-    font-size: 24px;
-    font-family: "Public Sans";
-    font-weight: 400;
+  align-self: start;
+  font-size: 24px;
+  font-family: "Public Sans";
+  font-weight: 400;
 }
 
 #movie-reviews {
-    display: flex;
-    background-color: aquamarine;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  background-color: aquamarine;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 #movie-reviews > button {
-    margin: 20px auto;
+  margin: 20px auto;
 }
