@@ -5,6 +5,19 @@
   width: 100%;
 }
 
+#logout {
+  padding: 16px 20px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  color: e50914;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
 #logo-bar {
   display: flex;
   column-gap: 20px;
@@ -15,7 +28,6 @@
   display: flex;
   margin: auto 20px;
   padding: 3px;
-  background-color: black;
 }
 
 #exit-img {
