@@ -17,14 +17,14 @@ router.post("/register", async (req, res) => {
     }
 
     bcrypt.hash(password, 10, async (err, hash) => {
-    if (err) {
-      return res.status(500).json({ message: "Failed to create user" });
-    }
-    const user = new User({ email, password: hash });
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    await user.save();
-    console.log("User created successfully", user)
-    res.json({ message: "User created successfully", token: token});
+      if (err) {
+        return res.status(500).json({ message: "Failed to create user" });
+      }
+      const user = new User({ email, password: hash });
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+      await user.save();
+      console.log("User created successfully", user);
+      res.json({ message: "User created successfully", token: token });
     });
   } catch (error) {
     res.status(500).json({ message: "Failed to create user" });

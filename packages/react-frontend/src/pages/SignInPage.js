@@ -66,31 +66,27 @@ const SignInPage = () => {
 
   return (
     <div className="signin" onSubmit={onSignIn}>
-        <form>
-          <h1>Sign In</h1>
-          <span className="signin_error">{loginError}</span>
-          <input
-            type="text"
-            placeholder="Email"
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-          />
-          <button type="submit">Sign In</button>
-          <h4>
-            <span className="signin_gray">New to Netflix? </span>
-            <span className="signin_link">
-              Sign up now.
-            </span>
-          </h4>
-        </form>
+      <form>
+        <h1>Sign In</h1>
+        <span className="signin_error">{loginError}</span>
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
+          }
+        />
+        <button type="submit">Sign In</button>
+        <h4>
+          <span className="signin_gray">New to Netflix? </span>
+          <span className="signin_link">Sign up now.</span>
+        </h4>
+      </form>
     </div>
   );
 };
