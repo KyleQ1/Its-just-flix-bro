@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 import MovieCard from "./MovieCard.js";
-import { ReactComponent as NextIcon } from "./assets/right-arrow.svg";
-import { ReactComponent as PreviousIcon } from "./assets/left-arrow.svg";
+import { ReactComponent as NextIcon } from "../assets/right-arrow.svg";
+import { ReactComponent as PreviousIcon } from "../assets/left-arrow.svg";
 
 const moviesPerPage = 7;
 

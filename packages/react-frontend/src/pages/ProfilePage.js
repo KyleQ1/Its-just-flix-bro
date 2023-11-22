@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "../components/Header";
 import "./ProfilePage.css";
 
 function ProfilePage() {

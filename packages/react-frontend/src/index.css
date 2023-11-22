@@ -18,11 +18,7 @@
   --movie-height: 140px;
   --movie-width: 200px;
   overflow-x: hidden;
-}
-
-a {
-  color: var(--fg-color);
-  text-decoration: none;
+  font-family: sans-serif;
 }
 
 #landing {
@@ -32,9 +28,11 @@ a {
 }
 
 #nav-bar-img {
-  width: 50px;
+  width: 100px;
   height: 100%;
 }
+
+/* TODO: Add css back for a element */
 
 table {
   table-layout: fixed;
