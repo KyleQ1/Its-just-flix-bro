@@ -87,7 +87,7 @@ router.get("/popular", async (req, res) => {
         .status(404)
         .json({ message: "No movies found for the specified genre." });
     }
-    
+
     res.json(movies);
   } catch (error) {
     console.error("Error fetching movies by genre:", error);

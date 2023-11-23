@@ -3,7 +3,7 @@ import logo from "../assets/netflix.png";
 import accountIcon from "../assets/account-icon.png";
 import search from "../assets/search-icon.png";
 import { Link } from "react-router-dom";
-import "./Header.css"
+import "./Header.css";
 
 function NavBar() {
   return (
