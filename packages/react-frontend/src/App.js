@@ -16,7 +16,7 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
-          <Route path="login" element={<Login />} />
+          {/*<Route path="login" element={<Login />} />
           <Route
             path="/"
             element={
@@ -24,7 +24,8 @@ function App() {
                 <HomePage />
               </RequireAuth>
             }
-          />
+          />*/}
+          <Route path="/" element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="movie" element={<MovieReviewPage />} />
         </Routes>
