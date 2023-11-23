@@ -13,61 +13,64 @@
  */
 
 :root {
-    --bg-color: gray;
-    --fg-color: black;
-    --movie-height: 140px;
-    overflow-x: hidden;
-}
-
-a {
-  color: var(--fg-color);
-  text-decoration: none;
+  --bg-color: gray;
+  --fg-color: black;
+  --movie-height: 140px;
+  --movie-width: 200px;
+  overflow-x: hidden;
+  font-family: sans-serif;
 }
 
 #landing {
   min-height: 100vh;
   background-color: var(--bg-color);
-  /* padding-top: 10px; */
 }
 
 #nav-bar-img {
-  width: 50px;
-  height: 100%;
+  width: 8.5vh;
+  height: auto;
+  object-fit: contain;
 }
 
-table {
-  table-layout: fixed;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-left: 100px;
-  margin-top: 10px;
-}
+/* TODO: Add css back for a element */
+/* a {
+  text-decoration: none;
+  color: var(--fg-color);
+} */
 
-td {
-  font-size: larger;
+#navigational-bar {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #nav-bar {
   display: flex;
   align-items: center;
-  column-gap: 20px;
+  column-gap: 3vh;
 }
 
-#nav-bar > a {
-  font-size: 24px;
+#nav-bar > button {
+  font-size: 22px;
   font-family: "Public Sans";
   font-weight: 300;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 #search-and-account {
-  display: flex;
   column-gap: 10px;
   margin-right: 20px;
 }
 
 #movie-list {
-    display: flex;
-    column-gap: 20px;
+  display: flex;
+  column-gap: 20px;
 }
 
 #movie-img {
@@ -86,4 +89,4 @@ td {
   font-weight: 400;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap");

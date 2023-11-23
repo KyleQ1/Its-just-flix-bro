@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
 });
 
 // Delete Movie Endpoint (DELETE)
-router.delete("/:movieId", async (req, res) => {
+router.delete("/id/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   try {
     const movie = await Movie.findByIdAndDelete(movieId);
@@ -42,7 +42,7 @@ router.delete("/:movieId", async (req, res) => {
 });
 
 // Get Movie Endpoint (GET)
-router.get("/:movieId", async (req, res) => {
+router.get("/id/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   try {
     const movie = await Movie.findById(movieId).populate("reviews.review");
@@ -92,6 +92,25 @@ router.get("/genre/:genre", async (req, res) => {
 
     // Find movies with the specified genre
     const movies = await Movie.find({ genres: genre });
+
+    if (movies.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No movies found for the specified genre." });
+    }
+
+    res.json(movies);
+  } catch (error) {
+    console.error("Error fetching movies by genre:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
+// Get movies in descending popularity (GET)
+router.get("/popular", async (req, res) => {
+  try {
+    // Find movies with the specified genre
+    const movies = await Movie.find().sort({ popularity: -1 }).limit(50);
 
     if (movies.length === 0) {
       return res

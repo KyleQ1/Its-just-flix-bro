@@ -6,6 +6,11 @@ function MovieList(props) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    function fetchMovies() {
+      const promise = fetch(`http://localhost:8000/movie/genre/${props.genre}`);
+      return promise;
+    }
+
     fetchMovies()
       .then((res) => {
         if (res.status === 404 || res.status === 500) {
@@ -21,12 +26,7 @@ function MovieList(props) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-
-  function fetchMovies() {
-    const promise = fetch(`http://localhost:8000/movie/genre/${props.genre}`);
-    return promise;
-  }
+  }, [props.genre]);
 
   function getRandomSubset(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());

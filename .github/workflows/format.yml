@@ -2,7 +2,9 @@ name: Format code
 
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
 
 jobs:
   format:
@@ -18,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Prettier
-        run: npx prettier --write **/*.js
+        run: npx prettier . --write
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

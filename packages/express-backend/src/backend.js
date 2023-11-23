@@ -4,12 +4,15 @@ import mongoose from "mongoose";
 import movieRouter from "./routes/movie.js";
 import reviewRouter from "./routes/review.js";
 import userRouter from "./routes/user.js";
+import dotenv from "dotenv";
 
 const app = express();
 const port = 8000;
 
 app.use(cors());
 app.use(express.json());
+
+dotenv.config({ path: ".env.local" });
 
 const connection_url =
   "mongodb+srv://newUser:newPassword@cluster0.g8i3gad.mongodb.net/FlixDB?retryWrites=true&w=majority";

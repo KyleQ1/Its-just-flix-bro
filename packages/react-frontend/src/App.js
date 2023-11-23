@@ -1,30 +1,35 @@
 import "./index.css";
-import NavBar from "./NavBar";
-import MovieList from "./MovieList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProfilePage from "./ProfilePage";
-import MovieReviewPage from "./MovieReviewPage";
+import { AuthProvider, RequireAuth } from "react-auth-kit";
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
+import MovieReviewPage from "./pages/MovieReviewPage";
+import Login from "./pages/LoginPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path=""
-          element={
-            <div id="landing">
-              <NavBar />
-              <MovieList genre="Action" />
-              <MovieList genre="Comedy" />
-              <MovieList genre="Horror" />
-            </div>
-          }
-        />
-        <Route path="profile" element={<ProfilePage />} />
-        {/* for loop num of routes from database */}
-        <Route path="movie" element={<MovieReviewPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider
+      authType={"cookie"}
+      authName={"_auth"}
+      cookieDomain={window.location.hostname}
+      cookieSecure={window.location.protocol === "https:"}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <RequireAuth loginPath={"login"}>
+                <HomePage />
+              </RequireAuth>
+            }
+          />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="movie" element={<MovieReviewPage />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

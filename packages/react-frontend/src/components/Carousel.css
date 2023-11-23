@@ -16,11 +16,14 @@
   background-color: transparent;
   width: 2rem;
   position: absolute;
-  top: 50%;
+  /* Arbitrary value that should be calcualted based on the 
+  height of the movie card and movie image but I'm lazy */
+  top: 35%;
   transform: translateY(-50%);
   font-size: 20px;
   cursor: pointer;
   height: var(--movie-height);
+  vertical-align: top;
 }
 
 .my-carousel button .icon {
@@ -28,14 +31,14 @@
 }
 
 .my-carousel button:disabled {
-  opacity: 0.5; 
-  cursor: not-allowed; 
+  opacity: 0.5;
+  cursor: not-allowed;
 }
-  
+
 .my-carousel button:first-child {
   left: 1rem;
 }
-  
+
 button:last-child {
   right: 0rem;
 }

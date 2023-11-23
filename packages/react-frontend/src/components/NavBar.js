@@ -1,21 +1,20 @@
 import React from "react";
-import logo from "./assets/netflix-logo.png";
-import accountIcon from "./assets/account-icon.png";
-import search from "./assets/search-icon.png";
+import logo from "../assets/netflix.png";
+import accountIcon from "../assets/account-icon.png";
+import search from "../assets/search-icon.png";
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 function NavBar() {
   return (
-    <div id="header">
+    <div id="navigational-bar">
       <div id="logo-bar">
         <Link to={"/"}>
           <img id="nav-bar-img" src={logo} alt="Netflix logo" />
         </Link>
         <div id="nav-bar">
-          <a href="">Home</a>
-          <a href="#">Movies</a>
-          <a href="#">TV Shows</a>
-          <a href="#">My List</a>
+          <button>Home</button>
+          <button>Movies</button>
         </div>
       </div>
       <div id="search-and-account">

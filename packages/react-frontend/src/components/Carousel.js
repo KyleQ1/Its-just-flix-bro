@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 import MovieCard from "./MovieCard.js";
-import { ReactComponent as NextIcon } from "./assets/right-arrow.svg";
-import { ReactComponent as PreviousIcon } from "./assets/left-arrow.svg";
+import { ReactComponent as NextIcon } from "../assets/right-arrow.svg";
+import { ReactComponent as PreviousIcon } from "../assets/left-arrow.svg";
 
 const moviesPerPage = 7;
 
@@ -44,7 +44,12 @@ const Carousel = ({ movies }) => {
               transform: `translateX(${currentSlide * 100 * moviesPerPage}%)`,
             }}
           >
-            <MovieCard title={movie.title} image={movie.image} id={movie._id} />
+            <MovieCard
+              title={movie.title}
+              image={movie.image}
+              genres={movie.genres}
+              id={movie._id}
+            />
           </div>
         ))}
       </div>
