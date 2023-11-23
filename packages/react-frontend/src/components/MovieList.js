@@ -3,9 +3,11 @@ import Carousel from "./Carousel";
 import { Link } from "react-router-dom";
 
 function MovieList(props) {
+  const effectRan = React.useRef(false);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    if (effectRan.current) return;
     function fetchMovies() {
       const promise = fetch(`http://localhost:8000/movie/genre/${props.genre}`);
       return promise;
@@ -26,6 +28,8 @@ function MovieList(props) {
       .catch((error) => {
         console.log(error);
       });
+    return () => 
+      (effectRan.current = true);
   }, [props.genre]);
 
   function getRandomSubset(arr, num) {

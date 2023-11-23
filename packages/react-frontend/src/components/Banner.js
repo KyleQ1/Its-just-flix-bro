@@ -3,8 +3,10 @@ import "./Banner.css";
 
 function Banner() {
   const [movie, setMovie] = useState([]);
+  const effectRan = React.useRef(false);
 
   useEffect(() => {
+    if (effectRan.current) return;
     fetchMovie()
       .then((res) => {
         if (res.status === 404 || res.status === 500) {
@@ -20,6 +22,8 @@ function Banner() {
       .catch((error) => {
         console.log(error);
       });
+    return () => 
+      (effectRan.current = true);
   }, []);
 
   function fetchMovie() {
