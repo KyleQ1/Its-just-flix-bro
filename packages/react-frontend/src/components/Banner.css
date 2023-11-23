@@ -1,6 +1,6 @@
 .banner {
   position: relative;
-  height: 448px;
+  height: 650px;
   color: white;
   object-fit: contain;
 }
@@ -8,7 +8,7 @@
 .banner_contents {
   margin-left: 30px;
   padding-top: 140px;
-  height: 190px;
+  height: 400px;
 }
 
 .banner_title {

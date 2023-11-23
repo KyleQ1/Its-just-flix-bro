@@ -24,12 +24,12 @@
 #landing {
   min-height: 100vh;
   background-color: var(--bg-color);
-  /* padding-top: 10px; */
 }
 
 #nav-bar-img {
-  width: 100px;
-  height: 100%;
+  width: 8.5vh;
+  height: auto;
+  object-fit: contain;
 }
 
 /* TODO: Add css back for a element */
@@ -38,20 +38,32 @@
   color: var(--fg-color);
 } */
 
+#navigational-bar {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 #nav-bar {
   display: flex;
   align-items: center;
-  column-gap: 20px;
+  column-gap: 3vh;
 }
 
-#nav-bar > a {
-  font-size: 24px;
+#nav-bar > button {
+  font-size: 22px;
   font-family: "Public Sans";
   font-weight: 300;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 #search-and-account {
-  display: flex;
   column-gap: 10px;
   margin-right: 20px;
 }

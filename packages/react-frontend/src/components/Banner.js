@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Banner.css";
 
 function Banner() {
-	const [description, setDescription] = useState("This is a description");
 	const [movie, setMovie] = useState([]);
 
 	useEffect(() => {
@@ -15,10 +14,8 @@ function Banner() {
 				}
 			})
 			.then((json) => {
-				const movie = json[0];
-				console.log(movie);
+				const movie = getRandomItem(json);
 				setMovie(movie);
-				setDescription(truncate(movie.overview, 150));
 			})
 			.catch((error) => {
 				console.log(error);
@@ -28,6 +25,10 @@ function Banner() {
 	function fetchMovie() {
 		const promise = fetch(`http://localhost:8000/movie/popular`);
 		return promise;
+	}
+
+	function getRandomItem(array) {
+		return array[Math.floor(Math.random() * array.length)];
 	}
 
 	// Truncate movie description
@@ -42,6 +43,7 @@ function Banner() {
         backgroundSize: "cover",
         backgroundImage: `url("${movie.image}")`,
         backgroundPosition: "center center",
+				
       }}
     >
       <div className="banner_contents">
@@ -50,7 +52,7 @@ function Banner() {
           <button className="banner_button">Review</button>
           <button className="banner_button">My List</button>
         </div>
-        <h1 className="banner_description">{truncate(movie.description)}</h1>
+        <h1 className="banner_description">{truncate(movie.description, 150)}</h1>
       </div>
 
       <div className="banner_fadeBottom" />
