@@ -26,8 +26,15 @@ router.post("/", async (req, res) => {
       rating,
     });
 
-    await review.save();
-    res.status(201).json(review);
+    const savedReview = await review.save();
+
+    // Update movie and user documents with the new review ID
+    movie.reviews.push(savedReview._id);
+    user.reviews.push(savedReview._id);
+
+    await Promise.all([movie.save(), user.save()]);
+
+    res.status(201).json(savedReview);
   } catch (error) {
     res.status(500).json({ error: "Failed to create review" });
   }
