@@ -10,7 +10,7 @@ function MovieList(props) {
       const promise = fetch(`http://localhost:8000/movie/genre/${props.genre}`);
       return promise;
     }
-    
+
     fetchMovies()
       .then((res) => {
         if (res.status === 404 || res.status === 500) {
