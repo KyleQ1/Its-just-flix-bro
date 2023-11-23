@@ -22,8 +22,7 @@ function Banner() {
       .catch((error) => {
         console.log(error);
       });
-    return () => 
-      (effectRan.current = true);
+    return () => (effectRan.current = true);
   }, []);
 
   function fetchMovie() {

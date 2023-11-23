@@ -28,8 +28,7 @@ function MovieList(props) {
       .catch((error) => {
         console.log(error);
       });
-    return () => 
-      (effectRan.current = true);
+    return () => (effectRan.current = true);
   }, [props.genre]);
 
   function getRandomSubset(arr, num) {
