@@ -63,4 +63,31 @@ router.get("/:reviewId", async (req, res) => {
   }
 });
 
+// Update Review by ID Endpoint (PUT)
+router.put("/:reviewId", async (req, res) => {
+  const reviewId = req.params.reviewId;
+  try {
+    const updatedReviewData = req.body;
+    const existingReview = await Review.findById(reviewId);
+
+    if (!existingReview) {
+      return res.status(404).json({ error: "Review not found" });
+    }
+
+    existingReview.movie = updatedReviewData.movie || existingReview.movie;
+    existingReview.user = updatedReviewData.user || existingReview.user;
+    existingReview.reviewText =
+      updatedReviewData.reviewText || existingReview.reviewText;
+    existingReview.reviewTitle =
+      updatedReviewData.reviewTitle || existingReview.reviewTitle;
+    existingReview.rating = updatedReviewData.rating || existingReview.rating;
+
+    const updatedReview = await existingReview.save();
+
+    res.status(200).json(updatedReview);
+  } catch (err) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 export default router;
