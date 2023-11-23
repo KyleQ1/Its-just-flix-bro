@@ -109,4 +109,31 @@ router.get("/:userId", async (req, res) => {
     res.status(500).json({ error: "Failed to get user" });
   }
 });
+
+// Update Movie by ID Endpoint (PUT)
+router.put("/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    const updatedUserData = req.body;
+    const existingUser = await User.findById(userId);
+
+    if (!existingUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    existingUser.email = updatedUserData.email || existingUser.email;
+    existingUser.password = updatedUserData.password || existingUser.password;
+    existingUser.watchlist =
+      updatedUserData.watchlist || existingUser.watchlist;
+    existingUser.reviews = updatedUserData.reviews || existingUser.reviews;
+
+    const updatedUser = await existingUser.save();
+
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 export default router;
