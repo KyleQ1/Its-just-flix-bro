@@ -16,7 +16,7 @@ function Review(props) {
                 <h4>4</h4>
                 <h4>5</h4>
             </div>
-            <div id="text">message</div>
+            <textarea id="text" placeholder="Write review"></textarea>
             <div id="review-button">
                 <button>Submit</button>
             </div>
