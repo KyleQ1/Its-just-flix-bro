@@ -4,6 +4,20 @@ import Review from "../models/review.js";
 
 const router = express.Router();
 
+// Get Movie Endpoint (GET)
+router.get("/", async (req, res) => {
+  try {
+    const movies = await Movie.find({})
+    if (!movies) {
+      res.send(404).json({message: "Movies not found"});
+    }
+    console.log("Grabbed all movies");
+    res.status(201).json(movies);
+  } catch (error) {
+    res.status(500).json({message: "Movies not found"});
+  }
+});
+
 // Create Movie Endpoint (POST)
 router.post("/", async (req, res) => {
   try {

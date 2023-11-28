@@ -8,9 +8,11 @@ const router = express.Router();
 // Create Review Endpoint (POST)
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body);
     const { movieId, userId, reviewText, reviewTitle, rating } = req.body;
 
     // Check if movie and user exist
+    console.log(movieId, userId);
     const movie = await Movie.findById(movieId);
     const user = await User.findById(userId);
 
@@ -36,6 +38,7 @@ router.post("/", async (req, res) => {
 
     res.status(201).json(savedReview);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Failed to create review" });
   }
 });
