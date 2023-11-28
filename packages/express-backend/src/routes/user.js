@@ -11,7 +11,7 @@ router.post("/register", async (req, res) => {
     const { email, password } = req.body;
 
     // Check if user already exists
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       return res.status(409).json({ message: "User already exists" });
     }
@@ -20,8 +20,7 @@ router.post("/register", async (req, res) => {
       if (err) {
         return res.status(500).json({ message: "Failed to create user" });
       }
-      const user = new User({ email, password: hash });
-      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+      const user = new User({ email: email, password: hash });
       await user.save();
       console.log("User created successfully", user);
       res.json({ message: "User created successfully", token: token });
