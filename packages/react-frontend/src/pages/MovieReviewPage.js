@@ -1,13 +1,16 @@
 import React from "react";
 import Header from "../components/Header";
+import { useParams } from "react-router-dom";
 import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
+  const id = useParams();
+
   return (
     <div id="landing">
       <div id="movie-background">
         <Header />
-        <h2>{/*props.title*/}title</h2>
+        <h2>title</h2>
       </div>
       <div id="review-body">
         <div id="movie-info">
