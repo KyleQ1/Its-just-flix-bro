@@ -26,7 +26,7 @@ function App() {
             }
           />
           <Route path="profile" element={<ProfilePage />} />
-          <Route path="movie" element={<MovieReviewPage />} />
+          <Route path="movies/:id" element={<MovieReviewPage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
