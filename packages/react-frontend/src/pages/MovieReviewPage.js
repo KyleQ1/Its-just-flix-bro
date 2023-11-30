@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
-import { useParams, useState, useEffect } from "react-router-dom";
 import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
-  const id = useParams();
-  const [movie, setMovie] = useState();
+  let { id } = useParams();
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
     function fetchMovie() {
@@ -27,26 +27,20 @@ function MovieReviewPage(props) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div id="landing">
       <div id="movie-background">
         <Header />
-        <h2>title</h2>
+        <img src={movie.image} alt={movie.title} />
+        <h2>{movie.title}</h2>
       </div>
       <div id="review-body">
         <div id="movie-info">
-          <div id="popularity">
-            <h4>1</h4>
-            <h4>2</h4>
-            <h4>3</h4>
-            <h4>4</h4>
-            <h4>5</h4>
-          </div>
-          <div id="genre">genre</div>
-          <div id="description">description</div>
-          <div id="release">release date</div>
+          <div id="genre">{movie.genre && movie.genre.join(", ")}</div>
+          <div id="description">{movie.description}</div>
+          <div id="release">{movie.releaseDate}</div>
         </div>
         <div id="movie-reviews">
           <h1>Review</h1>
