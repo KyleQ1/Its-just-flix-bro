@@ -8,7 +8,6 @@ const SignInPage = () => {
   const navigate = useNavigate();
   const failedLogin = "Invalid email or password.";
   const [error, setError] = useState(null);
-  const [registerSuccess, setRegisterSuccess] = useState(null);
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleLogin = (data) => {
@@ -92,7 +91,6 @@ const SignInPage = () => {
       <form>
         <h1>Sign In</h1>
         <span className="signin_error">{error}</span>
-        <span className="signin_success">{registerSuccess}</span>
         <input
           type="text"
           placeholder="Email"
