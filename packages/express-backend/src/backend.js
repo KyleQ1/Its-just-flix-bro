@@ -16,7 +16,7 @@ dotenv.config({ path: ".env.local" });
 
 const connection_url =
   "mongodb+srv://newUser:newPassword@cluster0.g8i3gad.mongodb.net/FlixDB?retryWrites=true&w=majority";
-
+  
 mongoose
   .connect(connection_url, {
     useUnifiedTopology: true,

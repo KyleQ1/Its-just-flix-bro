@@ -52,9 +52,12 @@ const SignInPage = () => {
     fetch(register_url, settings)
       .then((res) => {
         if (res.status === 200) {
-          setRegisterSuccess("Register successful");
+          return res.json();
+        } else {
+          setError(failedLogin);
         }
       })
+      .then(handleLogin)
       .catch(() => setError(failedLogin))
   }
 
