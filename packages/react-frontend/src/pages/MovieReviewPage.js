@@ -1,10 +1,33 @@
 import React from "react";
 import Header from "../components/Header";
-import { useParams } from "react-router-dom";
+import { useParams, useState, useEffect } from "react-router-dom";
 import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
   const id = useParams();
+  const [movie, setMovie] = useState();
+
+  useEffect(() => {
+    function fetchMovie() {
+      const promise = fetch(`http://localhost:8000/movie/id/${id}`);
+      return promise;
+    }
+
+    fetchMovie()
+      .then((res) => {
+        if (res.status === 404 || res.status === 500) {
+          throw new Error(`GET failed, status code ${res.status}`);
+        } else {
+          return res.json();
+        }
+      })
+      .then((json) => {
+        setMovie(json);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div id="landing">
