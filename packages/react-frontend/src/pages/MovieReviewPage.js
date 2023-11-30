@@ -30,23 +30,20 @@ function MovieReviewPage(props) {
   }, [id]);
 
   return (
-    <div id="landing">
-      <div id="movie-background">
-        <Header />
-        <img src={movie.image} alt={movie.title} />
-        <h2>{movie.title}</h2>
+    <div className="movie-page">
+      <Header />
+      <div className="moviepage-background">
+        <img src={movie.image} alt={movie.title} className="moviepage-image" />
       </div>
-      <div id="review-body">
-        <div id="movie-info">
-          <div id="genre">{movie.genre && movie.genre.join(", ")}</div>
-          <div id="description">{movie.description}</div>
-          <div id="release">{movie.releaseDate}</div>
+      <div className="moviepage-details">
+        <div className="moviepage-title">{movie.title}</div>
+        <div className="moviepage-genre">
+          {movie.genres && movie.genres.join(", ")}
         </div>
-        <div id="movie-reviews">
-          <h1>Review</h1>
-          <button>Submit Review</button>
-        </div>
+        <div className="moviepage-description">{movie.description}</div>
+        <div className="moviepage-release">{movie.releaseDate}</div>
       </div>
+      <div className="movie-reviews"></div>
     </div>
   );
 }
