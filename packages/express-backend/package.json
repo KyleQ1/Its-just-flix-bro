@@ -20,6 +20,6 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.3",
     "moviedb-promise": "^4.0.3",
-    "openai": "^4.16.1"
+    "openai": "^4.20.1"
   }
 }
