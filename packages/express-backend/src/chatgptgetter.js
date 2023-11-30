@@ -16,10 +16,7 @@ const defaultSystem = `You are a movie reviewer
     If it's not out then continue `;
 // Takes in movietitle and takes a few minutes to get a response
 // Add response to database
-async function sendPrompt(
-  string,
-  system = defaultSystem,
-) {
+async function sendPrompt(string, system = defaultSystem) {
   const completion = await openai.chat.completions.create({
     messages: [
       { role: "system", content: system },
@@ -34,35 +31,34 @@ async function sendPrompt(
 function getRating() {
   const mean = 4;
   const stdDev = 1;
-  // Using the Box-Muller transform to generate random numbers 
+  // Using the Box-Muller transform to generate random numbers
   // with a normal distribution
   const u1 = Math.random();
   const u2 = Math.random();
 
   const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
-  const rating = mean + stdDev * z0
+  const rating = mean + stdDev * z0;
 
-  return Math.max(1, Math.min(5, Math.round(rating)))
+  return Math.max(1, Math.min(5, Math.round(rating)));
 }
 
-async function sendReview(review, movie) { 
+async function sendReview(review, movie) {
   const hardcodeUserID = `6567d789802b1fade4380af4`;
   const body = {
     movieId: movie._id,
     userId: hardcodeUserID,
     reviewText: review,
     reviewTitle: movie.title,
-    rating: getRating()
-  }
+    rating: getRating(),
+  };
   console.log(body);
   const options = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(body)
-  }
-
+    body: JSON.stringify(body),
+  };
 
   return await fetch("http://localhost:8000/review", options);
 }
@@ -76,12 +72,12 @@ async function processMovies(movie) {
     console.log("Review not sent: ", await result.json());
   }
 
-  return {result, review}
+  return { result, review };
 }
 
 // Connect to backend and get all movies
 async function getAllBackendMovies() {
-  const result = await fetch('http://localhost:8000/movie');
+  const result = await fetch("http://localhost:8000/movie");
   const movies = await result.json();
   try {
     await Promise.all(movies.map(processMovies));
