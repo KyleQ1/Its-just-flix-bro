@@ -33,7 +33,7 @@ async function sendPrompt(
 // Create a normal distribution to get somewhat random rating
 function getRating() {
   const mean = 4;
-  const stdDev = 1.2;
+  const stdDev = 1;
   // Using the Box-Muller transform to generate random numbers 
   // with a normal distribution
   const u1 = Math.random();
@@ -46,7 +46,7 @@ function getRating() {
 }
 
 async function sendReview(review, movie) { 
-  const hardcodeUserID = `655de1ec27b7aaffd66a39f9`;
+  const hardcodeUserID = `6567d789802b1fade4380af4`;
   const body = {
     movieId: movie._id,
     userId: hardcodeUserID,
@@ -70,8 +70,7 @@ async function sendReview(review, movie) {
 let i = 0;
 async function processMovies(movie) {
   i++;
-  //const review = await sendPrompt(movie.title + "\n" + movie.description);
-  const review = "hi"
+  const review = await sendPrompt(movie.title + "\n" + movie.description);
   const result = await sendReview(review, movie);
   if (result.status !== 201) {
     console.log("Review not sent: ", await result.json());
@@ -83,12 +82,9 @@ async function processMovies(movie) {
 // Connect to backend and get all movies
 async function getAllBackendMovies() {
   const result = await fetch('http://localhost:8000/movie');
-  const test = await result.json();
-  let movies = []
-  movies.push(test[0])
-  movies.push(test[1]);
+  const movies = await result.json();
   try {
-    const result = await Promise.all(movies.map(processMovies));
+    await Promise.all(movies.map(processMovies));
   } catch (e) {
     console.error(e);
   }
