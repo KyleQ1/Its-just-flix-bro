@@ -17,15 +17,6 @@
   margin: auto 20px;
 }
 
-#rating {
-  display: flex;
-  justify-content: space-evenly;
-  width: 40vw;
-  font-size: 24px;
-  font-family: "Public Sans";
-  font-weight: 300;
-}
-
 #text {
   display: flex;
   height: 60vh;

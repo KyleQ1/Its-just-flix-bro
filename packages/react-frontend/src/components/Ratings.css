@@ -1,0 +1,18 @@
+#rating {
+    display: flex;
+    width: 40vw;
+    margin-left: 10vw;
+    margin-bottom: 1vh;
+  }
+
+#rating > button {
+    background-color: transparent;
+    transition-duration: 0.3s;
+    margin: auto 10px;
+    width: 10vw;
+    height: 5vh;
+}
+
+#rating > button:hover {
+    background-color: yellow;
+}
