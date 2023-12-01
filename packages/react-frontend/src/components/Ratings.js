@@ -34,7 +34,7 @@ function Ratings() {
             //  the stars upto the clicked one should be yellow again
             // If star 5 was clicked,
             //  everything should remain transparent
-            if (num != setClickeds.length) {
+            if (num !== setClickeds.length) {
                 for (let i = 0; i < num; i++) {
                     setClickeds[i][1](true);
                 }
