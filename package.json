@@ -13,5 +13,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "devDependencies": {
+    "supertest": "^6.3.3"
   }
 }

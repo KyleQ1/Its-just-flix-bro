@@ -8,35 +8,10 @@ const router = express.Router();
 // Create Review Endpoint (POST)
 router.post("/", async (req, res) => {
   try {
-    const { movieId, userId, reviewText, reviewTitle, rating } = req.body;
-
-    // Check if movie and user exist
-    const movie = await Movie.findById(movieId);
-    const user = await User.findById(userId);
-
-    if (!movie || !user) {
-      return res.status(404).json({ error: "Movie or user not found" });
-    }
-
-    const review = new Review({
-      movie: movieId,
-      user: userId,
-      reviewText,
-      reviewTitle,
-      rating,
-    });
-
-    const savedReview = await review.save();
-
-    // Update movie and user documents with the new review ID
-    movie.reviews.push(savedReview._id);
-    user.reviews.push(savedReview._id);
-
-    await Promise.all([movie.save(), user.save()]);
-
-    res.status(201).json(savedReview);
+    const review = await Review.createReview(req.body);
+    res.status(201).json(review);
   } catch (error) {
-    res.status(500).json({ error: "Failed to create review" });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -44,13 +19,10 @@ router.post("/", async (req, res) => {
 router.delete("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
-    const review = await Review.findByIdAndDelete(reviewId);
-    if (!review) {
-      return res.status(404).json({ error: "Review not found" });
-    }
-    res.json({ message: "Review deleted successfully" });
+    const result = await Review.deleteReview(reviewId);
+    res.json(result);
   } catch (error) {
-    res.status(500).json({ error: "Failed to delete review" });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -58,15 +30,10 @@ router.delete("/:reviewId", async (req, res) => {
 router.get("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
-    const review = await Review.findById(reviewId)
-      .populate("movie")
-      .populate("user");
-    if (!review) {
-      return res.status(404).json({ error: "Review not found" });
-    }
+    const review = await Review.getReviewById(reviewId);
     res.json(review);
   } catch (error) {
-    res.status(500).json({ error: "Failed to get review" });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -74,26 +41,10 @@ router.get("/:reviewId", async (req, res) => {
 router.put("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
-    const updatedReviewData = req.body;
-    const existingReview = await Review.findById(reviewId);
-
-    if (!existingReview) {
-      return res.status(404).json({ error: "Review not found" });
-    }
-
-    existingReview.movie = updatedReviewData.movie || existingReview.movie;
-    existingReview.user = updatedReviewData.user || existingReview.user;
-    existingReview.reviewText =
-      updatedReviewData.reviewText || existingReview.reviewText;
-    existingReview.reviewTitle =
-      updatedReviewData.reviewTitle || existingReview.reviewTitle;
-    existingReview.rating = updatedReviewData.rating || existingReview.rating;
-
-    const updatedReview = await existingReview.save();
-
+    const updatedReview = await Review.updateReviewById(reviewId, req.body);
     res.status(200).json(updatedReview);
   } catch (err) {
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: err.message });
   }
 });
 

@@ -39,6 +39,102 @@ const movieSchema = new mongoose.Schema(
   { collection: "Movies" },
 );
 
+movieSchema.statics.createMovie = async function (data) {
+  try {
+    const movie = new this(data);
+    await movie.save();
+    return movie;
+  } catch (error) {
+    throw new Error("Failed to create movie");
+  }
+};
+
+movieSchema.statics.deleteMovie = async function (movieId) {
+  try {
+    const movie = await this.findByIdAndDelete(movieId);
+    if (!movie) {
+      throw new Error("Movie not found");
+    }
+    // Delete associated reviews
+    await Review.deleteMany({ movie: movieId });
+    return { message: "Movie and associated reviews deleted successfully" };
+  } catch (error) {
+    throw new Error("Failed to delete movie");
+  }
+};
+
+movieSchema.statics.getMovieById = async function (movieId) {
+  try {
+    const movie = await this.findById(movieId).populate("reviews.review");
+    if (!movie) {
+      throw new Error("Movie not found");
+    }
+    return movie;
+  } catch (error) {
+    throw new Error("Failed to get movie");
+  }
+};
+
+movieSchema.statics.updateMovieById = async function (movieId, updatedMovieData) {
+  try {
+    // Ensure updatedMovieData is an object
+    if (typeof updatedMovieData !== 'object' || updatedMovieData === null) {
+      throw new Error('Invalid updatedMovieData. Must be an object.');
+    }
+
+    const existingMovie = await this.findById(movieId);
+    if (!existingMovie) {
+      throw new Error('Movie not found');
+    }
+
+    // Update movie fields with the provided data
+    existingMovie.title = updatedMovieData.title || existingMovie.title;
+    existingMovie.description = updatedMovieData.description || existingMovie.description;
+    existingMovie.image = updatedMovieData.image || existingMovie.image;
+    existingMovie.genres = updatedMovieData.genres || existingMovie.genres;
+    existingMovie.popularity = updatedMovieData.popularity || existingMovie.popularity;
+    existingMovie.releaseDate = updatedMovieData.releaseDate || existingMovie.releaseDate;
+    existingMovie.reviews = updatedMovieData.reviews || existingMovie.reviews;
+
+    // Save the updated movie
+    const updatedMovie = await existingMovie.save();
+
+    return updatedMovie;
+  } catch (error) {
+    throw new Error(`Failed to update movie: ${error.message}`);
+  }
+};
+
+movieSchema.statics.getMoviesByGenre = async function (genre) {
+  try {
+    const movies = await this.find({ genres: genre });
+
+    if (movies.length === 0) {
+      throw new Error("No movies found for the specified genre.");
+    }
+
+    return movies;
+  } catch (error) {
+    console.error("Error fetching movies by genre:", error);
+    throw new Error("Internal Server Error");
+  }
+};
+
+movieSchema.statics.getPopularMovies = async function () {
+  try {
+    const movies = await this.find().sort({ popularity: -1 }).limit(50);
+
+    if (movies.length === 0) {
+      throw new Error("No popular movies found.");
+    }
+
+    return movies;
+  } catch (error) {
+    console.error("Error fetching popular movies:", error);
+    throw new Error("Internal Server Error");
+  }
+};
+
 const Movie = mongoose.model("Movie", movieSchema);
 
 export default Movie;
