@@ -1,0 +1,43 @@
+#review-header {
+  display: flex;
+  align-items: center;
+}
+
+#title > h1 {
+  font-size: 24px;
+  font-family: "Public Sans";
+  font-weight: 400;
+  margin: 20px 20px;
+}
+
+#user-icon {
+  width: 75px;
+  height: 100%;
+  border-radius: 100%;
+  margin: auto 20px;
+}
+
+#rating {
+  display: flex;
+  justify-content: space-evenly;
+  width: 40vw;
+  font-size: 24px;
+  font-family: "Public Sans";
+  font-weight: 300;
+}
+
+#text {
+  display: flex;
+  height: 60vh;
+  width: 80vw;
+  position: relative;
+  left: 10vw;
+  border-style: solid;
+}
+
+#review-button {
+  display: flex;
+  position: relative;
+  flex-direction: row-reverse;
+  right: 10vw;
+}
