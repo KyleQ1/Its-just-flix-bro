@@ -1,14 +1,16 @@
 import React from "react";
-import "./Ratings.css"
+import "./Ratings.css";
+import Star from "./Star";
 
 function Ratings() {
     return (
         <div id="rating">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
+            <button><Star /></button>
+            <button><Star /></button>
+            <button><Star /></button>
+            <button><Star /></button>
+            <button><Star /></button>
+            
         </div>
     )
 }

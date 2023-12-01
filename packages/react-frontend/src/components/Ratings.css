@@ -1,18 +1,31 @@
 #rating {
     display: flex;
-    width: 40vw;
+    width: 25vw;
     margin-left: 10vw;
-    margin-bottom: 1vh;
-  }
+    margin-bottom: 5vh;
+}
 
-#rating > button {
-    background-color: transparent;
-    transition-duration: 0.3s;
-    margin: auto 10px;
-    width: 10vw;
+button > img {
+    width: 3vw;
     height: 5vh;
 }
 
-#rating > button:hover {
-    background-color: yellow;
+#rating > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transition-duration: 0.3s;
+    width: 50vw;
+    height: 10vh;
+}
+
+#rating > button svg {
+    fill: rgba(0, 0, 0, 0);
+    stroke: black;
+    transition: fill 0.1s ease-in-out;
+}
+
+#rating > button:hover svg {
+    fill: #ED8A19;
 }
