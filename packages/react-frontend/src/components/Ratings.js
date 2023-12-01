@@ -1,5 +1,5 @@
 import React from "react";
-import "./Ratings.css";
+import "./Ratings.css"
 import Star from "./Star";
 
 function Ratings() {
