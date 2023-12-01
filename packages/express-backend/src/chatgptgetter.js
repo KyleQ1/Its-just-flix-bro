@@ -46,7 +46,7 @@ function getRating() {
 }
 
 async function sendReview(review, movie) { 
-  const hardcodeUserID = `6567d789802b1fade4380af4`;
+  const hardcodeUserID = `6567d7b3802b1fade4380b07`;
   const body = {
     movieId: movie._id,
     userId: hardcodeUserID,
@@ -82,7 +82,8 @@ async function processMovies(movie) {
 // Connect to backend and get all movies
 async function getAllBackendMovies() {
   const result = await fetch('http://localhost:8000/movie');
-  const movies = await result.json();
+  let movies = await result.json();
+  //movies = movies.filter((movie) => movie.reviews.length < 2 )
   try {
     await Promise.all(movies.map(processMovies));
   } catch (e) {
