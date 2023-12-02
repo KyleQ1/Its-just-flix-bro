@@ -87,8 +87,8 @@ const SignInPage = () => {
   };
 
   return (
-    <div className="signin" onSubmit={onSignIn}>
-      <form>
+    <div className="signin">
+      <form onSubmit={onSignIn}>
         <h1>Sign In</h1>
         <span className="signin_error">{error}</span>
         <input
@@ -106,7 +106,7 @@ const SignInPage = () => {
         <button type="submit">Sign In</button>
         <h4>
           <span className="signin_gray">New to Netflix? </span>
-          <button className="signin_link" onClick={onRegister}>Sign up now.</button>
+          <button className="signin_link"i onClick={onRegister}>Sign up now.</button>
         </h4>
       </form>
     </div>
