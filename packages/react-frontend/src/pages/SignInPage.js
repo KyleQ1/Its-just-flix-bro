@@ -7,7 +7,7 @@ const SignInPage = () => {
   const signIn = useSignIn();
   const navigate = useNavigate();
   const failedLogin = "Invalid email or password.";
-  const [loginError, setLoginError] = useState(null);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleLogin = (data) => {
@@ -35,8 +35,30 @@ const SignInPage = () => {
           navigate("/");
         }
       })
-      .catch(() => setLoginError(failedLogin));
+      .catch(() => setError(failedLogin));
   };
+
+  const onRegister = (e) => {
+    e.preventDefault();
+    const register_url = "http://localhost:8000/user/register";
+    const settings = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    }
+    fetch(register_url, settings)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        } else {
+          setError(failedLogin);
+        }
+      })
+      .then(handleLogin)
+      .catch(() => setError(failedLogin))
+  }
 
   const onSignIn = (e) => {
     e.preventDefault();
@@ -57,18 +79,18 @@ const SignInPage = () => {
         if (res.status === 200) {
           return res.json();
         } else {
-          setLoginError(res.json().message);
+          setError(res.json().message);
         }
       })
       .then(handleLogin)
-      .catch(() => setLoginError(failedLogin));
+      .catch(() => setError(failedLogin));
   };
 
   return (
-    <div className="signin" onSubmit={onSignIn}>
-      <form>
+    <div className="signin">
+      <form onSubmit={onSignIn}>
         <h1>Sign In</h1>
-        <span className="signin_error">{loginError}</span>
+        <span className="signin_error">{error}</span>
         <input
           type="text"
           placeholder="Email"
@@ -84,7 +106,7 @@ const SignInPage = () => {
         <button type="submit">Sign In</button>
         <h4>
           <span className="signin_gray">New to Netflix? </span>
-          <span className="signin_link">Sign up now.</span>
+          <button className="signin_link"i onClick={onRegister}>Sign up now.</button>
         </h4>
       </form>
     </div>
