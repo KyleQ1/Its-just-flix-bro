@@ -44,10 +44,10 @@ const SignInPage = () => {
     const settings = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
-    }
+      body: JSON.stringify(formData),
+    };
     fetch(register_url, settings)
       .then((res) => {
         if (res.status === 200) {
@@ -57,8 +57,8 @@ const SignInPage = () => {
         }
       })
       .then(handleLogin)
-      .catch(() => setError(failedLogin))
-  }
+      .catch(() => setError(failedLogin));
+  };
 
   const onSignIn = (e) => {
     e.preventDefault();
@@ -106,7 +106,9 @@ const SignInPage = () => {
         <button type="submit">Sign In</button>
         <h4>
           <span className="signin_gray">New to Netflix? </span>
-          <button className="signin_link"i onClick={onRegister}>Sign up now.</button>
+          <button className="signin_link" i onClick={onRegister}>
+            Sign up now.
+          </button>
         </h4>
       </form>
     </div>

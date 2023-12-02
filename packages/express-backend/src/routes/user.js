@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
         return res.status(500).json({ message: "Failed to create user" });
       }
       const user = new User({ email: email, password: hash });
-      const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
       await user.save();
       console.log("User created successfully", user);
       res.json({ message: "User created successfully", token: token });
