@@ -1,4 +1,5 @@
 import React from "react";
+import Ratings from "./Ratings"
 import userLogo from "../assets/account-icon.png";
 import "./Review.css";
 
@@ -9,13 +10,7 @@ function Review(props) {
         <img id="user-icon" src={userLogo} alt="User Icon" />
         <h1>title</h1>
       </div>
-      <div id="rating">
-        <h4>1</h4>
-        <h4>2</h4>
-        <h4>3</h4>
-        <h4>4</h4>
-        <h4>5</h4>
-      </div>
+      <Ratings />
       <textarea id="text" placeholder="Write review"></textarea>
       <div id="review-button">
         <button>Submit</button>

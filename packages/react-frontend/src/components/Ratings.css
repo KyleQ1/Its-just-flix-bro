@@ -1,0 +1,29 @@
+#rating {
+    display: flex;
+    width: 25vw;
+    margin-left: 10vw;
+    margin-bottom: 5vh;
+}
+
+button > img {
+    width: 3vw;
+    height: 5vh;
+}
+
+#rating > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 50vw;
+    height: 10vh;
+}
+
+#rating > button svg {
+    stroke: black;
+    transition: fill 0.1s ease-in-out;
+}
+
+#rating > button:hover svg {
+    fill: #ED8A19;
+}
