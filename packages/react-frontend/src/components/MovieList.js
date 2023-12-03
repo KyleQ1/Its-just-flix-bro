@@ -39,9 +39,7 @@ function MovieList(props) {
   return (
     <div>
       <div id="movie-genre">
-        <Link to={"/movie"}>
-          <h1>{props.genre}</h1>
-        </Link>
+        <h1>{props.genre}</h1>
       </div>
       <div id="movie-list">
         <Carousel movies={movies} />

@@ -13,17 +13,12 @@
  */
 
 :root {
-  --bg-color: gray;
-  --fg-color: black;
+  --bg-color: black;
+  --fg-color: rgb(209, 209, 209);
   --movie-height: 140px;
   --movie-width: 200px;
   overflow-x: hidden;
   font-family: sans-serif;
-}
-
-#landing {
-  min-height: 100vh;
-  background-color: var(--bg-color);
 }
 
 #nav-bar-img {
@@ -45,7 +40,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.45);
 }
 
 #nav-bar {
@@ -55,6 +50,7 @@
 }
 
 #nav-bar > button {
+  color: white;
   font-size: 22px;
   font-family: "Public Sans";
   font-weight: 300;
@@ -84,9 +80,9 @@
 }
 
 #movie-genre > h1 {
-  font-size: 24px;
+  color: white;
+  font-size: 28px;
   font-family: "Public Sans";
-  font-weight: 400;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap");
