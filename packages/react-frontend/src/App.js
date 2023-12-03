@@ -5,7 +5,6 @@ import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import MovieReviewPage from "./pages/MovieReviewPage";
 import Login from "./pages/LoginPage";
-import Review from "./components/Review";
 
 function App() {
   return (
