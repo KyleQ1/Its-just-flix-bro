@@ -1,83 +1,58 @@
-#movie-background {
+.movie-page {
   display: flex;
-  justify-content: space-between;
-  background-color: bisque;
-  height: 70vh;
   flex-direction: column;
-}
-
-#movie-background > h2 {
-  position: relative;
-  bottom: 100px;
-  left: 100px;
-  font-size: 24px;
-  font-family: "Public Sans";
-  font-weight: 400;
-}
-
-#review-body {
-  display: flex;
-  background-color: gray;
-  flex-wrap: wrap;
-  height: 80vh;
-}
-
-#movie-info {
-  display: grid;
-  background-color: cadetblue;
-  height: 20vh;
-  width: 100%;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
-}
-
-#popularity {
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  width: 40vw;
+  justify-content: flex-start;
+  background-color: #141414;
+  color: white;
+  padding-top: 50px;
+  height: 100vh;
 }
 
-#popularity > h4 {
-  margin: 0;
-  font-size: 24px;
-  font-family: "Public Sans";
-  font-weight: 300;
+.moviepage-background {
+  width: 100%;
+  height: 60vh;
 }
 
-#description {
-  align-self: start;
-  font-size: 24px;
-  font-family: "Public Sans";
-  font-weight: 300;
-}
-
-#genre {
-  align-self: end;
-  font-size: 24px;
-  font-family: "Public Sans";
-  font-weight: 400;
-}
-
-#release {
-  align-self: start;
-  font-size: 24px;
-  font-family: "Public Sans";
-  font-weight: 400;
-}
-
-#movie-reviews {
-  display: flex;
-  background-color: aquamarine;
-  margin: 0;
+.moviepage-image {
+  width: 100%;
   height: 100%;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-#movie-reviews > button {
-  margin: 20px auto;
+.moviepage-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.moviepage-title {
+  font-size: 3rem;
+  width: 20%;
+  margin: 0 10px;
+}
+
+.moviepage-genre {
+  font-size: 1.5rem;
+  width: 15%;
+  margin: 0 10px;
+}
+
+.moviepage-description {
+  font-size: 1.2rem;
+  width: 40%;
+  line-height: 1.5;
+  margin: 0 10px;
+}
+
+.moviepage-release {
+  font-size: 1rem;
+  opacity: 0.7;
+  width: 10%;
+  margin: 0 10px;
 }
