@@ -28,13 +28,13 @@ function NavBar() {
           <button>Movies</button>
         </div>
       </div>
-      <div id="search-and-account">
-        {isSearchExpanded && <Search onMouseOut={handleSearchBlur} />}
+      <div id="search-and-account" onBlur={handleSearchBlur}>
+        {isSearchExpanded && <Search />}
         <img
           id="nav-bar-img"
           src={searchIcon}
           alt="Search icon"
-          onMouseOver={handleSearchIconHover}
+          onClick={handleSearchIconHover}
         />
         <Link to={"/profile"}>
           <img id="nav-bar-img" src={accountIcon} alt="Account icon" />
