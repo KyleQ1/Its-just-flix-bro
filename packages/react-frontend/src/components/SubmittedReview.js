@@ -31,8 +31,8 @@ function SubmittedReview(props) {
                 <img id="user-icon" src={props.user} alt="User Icon" />
                 <h1>{props.title}</h1>
             </div>
-        {starArray}
-        <textarea id="text" readOnly>{props.text}</textarea>
+            <div id="rating">{starArray}</div>
+            <textarea id="text" readOnly>{props.text}</textarea>
         </div>
     )
 }
