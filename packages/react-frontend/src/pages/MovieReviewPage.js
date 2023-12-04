@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Review from "../components/Review";
+import SubmittedReview from "../components/SubmittedReview";
 import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
   let { id } = useParams();
   const [movie, setMovie] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     function fetchMovie() {
@@ -45,7 +47,10 @@ function MovieReviewPage(props) {
         <div className="moviepage-release">{movie.releaseDate}</div>
       </div>
       <div className="movie-reviews">
-        <Review title={movie.title}/>
+        {
+          submitted ? <SubmittedReview title={movie.title}/> : <Review title={movie.title} setSubmitted={setSubmitted}/>
+        }
+        
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ function Review(props) {
       <Ratings />
       <textarea id="text" placeholder="Write review"></textarea>
       <div id="review-button">
-        <button onClick={console.log("pressed")}>Submit</button>
+        <button onClick={() => props.setSubmitted(true)}>Submit</button>
       </div>
     </div>
   );

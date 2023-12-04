@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import MovieReviewPage from "./pages/MovieReviewPage";
 import Login from "./pages/LoginPage";
+import SubmittedReview from "./components/SubmittedReview";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               //</RequireAuth>
             }
           />
+          <Route path="submitted-review" element={<SubmittedReview />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="movies/:id" element={<MovieReviewPage />} />
         </Routes>
