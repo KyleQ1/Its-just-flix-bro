@@ -1,3 +1,8 @@
+#review-landing {
+  width: 100%;
+  background-color: grey;
+}
+
 #review-header {
   display: flex;
   align-items: center;

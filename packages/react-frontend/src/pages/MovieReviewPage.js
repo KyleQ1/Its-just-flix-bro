@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Review from "../components/Review";
 import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
@@ -43,7 +44,9 @@ function MovieReviewPage(props) {
         <div className="moviepage-description">{movie.description}</div>
         <div className="moviepage-release">{movie.releaseDate}</div>
       </div>
-      <div className="movie-reviews"></div>
+      <div className="movie-reviews">
+        <Review title={movie.title}/>
+      </div>
     </div>
   );
 }

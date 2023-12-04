@@ -5,15 +5,15 @@ import "./Review.css";
 
 function Review(props) {
   return (
-    <div id="landing">
+    <div id="review-landing">
       <div id="review-header">
         <img id="user-icon" src={userLogo} alt="User Icon" />
-        <h1>title</h1>
+        <h1>{props.title}</h1>
       </div>
       <Ratings />
       <textarea id="text" placeholder="Write review"></textarea>
       <div id="review-button">
-        <button>Submit</button>
+        <button onClick={console.log("pressed")}>Submit</button>
       </div>
     </div>
   );
