@@ -8,12 +8,6 @@ const router = express.Router();
 // Create Review Endpoint (POST)
 router.post("/", async (req, res) => {
   try {
-<<<<<<< HEAD
-    const review = await Review.createReview(req.body);
-    res.status(201).json(review);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-=======
     console.log(req.body);
     const { movieId, userId, reviewText, reviewTitle, rating } = req.body;
 
@@ -46,7 +40,6 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Failed to create review" });
->>>>>>> origin/main
   }
 });
 
@@ -65,14 +58,10 @@ router.delete("/:reviewId", async (req, res) => {
 router.get("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
-<<<<<<< HEAD
-    const review = await Review.getReviewById(reviewId);
-=======
     const review = await Review.findById(reviewId);
     if (!review) {
       return res.status(404).json({ error: "Review not found" });
     }
->>>>>>> origin/main
     res.json(review);
   } catch (error) {
     res.status(500).json({ error: error.message });
