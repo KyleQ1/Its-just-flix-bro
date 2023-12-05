@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Banner.css";
 
 function Banner() {
@@ -51,7 +52,9 @@ function Banner() {
       <div className="banner_contents">
         <h1 className="banner_title">{movie.title}</h1>
         <div className="banner_buttons">
-          <button className="banner_button">Review</button>
+          <Link to={`/movies/${movie._id}`}>
+            <button className="banner_button">Review</button>
+          </Link>
           <button className="banner_button">My List</button>
         </div>
         <h1 className="banner_description">

@@ -61,9 +61,7 @@ router.delete("/:reviewId", async (req, res) => {
 router.get("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
-    const review = await Review.findById(reviewId)
-      .populate("movie")
-      .populate("user");
+    const review = await Review.findById(reviewId);
     if (!review) {
       return res.status(404).json({ error: "Review not found" });
     }
