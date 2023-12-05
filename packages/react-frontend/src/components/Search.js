@@ -5,7 +5,7 @@ import MovieCard from "./MovieSearchCard.js";
 function Search() {
   const itemsPerPage = 3;
   const effectRan = useRef(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
 
@@ -26,24 +26,33 @@ function Search() {
   }, []);
 
   useEffect(() => {
-    const filtered = movies.filter(movie =>
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+    const filtered = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchQuery.toLowerCase()),
     );
     setFilteredMovies(filtered);
   }, [searchQuery, movies]);
 
-  const displayedMovies = searchQuery.length > 0
-    ? filteredMovies.slice(0, itemsPerPage).map(movie => (
-        <MovieCard key={movie._id} id={movie._id} image={movie.image} title={movie.title} />
-      ))
-    : null;
+  const displayedMovies =
+    searchQuery.length > 0
+      ? filteredMovies
+          .slice(0, itemsPerPage)
+          .map((movie) => (
+            <MovieCard
+              key={movie._id}
+              id={movie._id}
+              image={movie.image}
+              title={movie.title}
+            />
+          ))
+      : null;
 
   return (
-    <div className="search" >
-      <input type="text" 
-      placeholder="Title's, people, genre" 
-      value={searchQuery}
-      onChange={e => setSearchQuery(e.target.value)}
+    <div className="search">
+      <input
+        type="text"
+        placeholder="Title's, people, genre"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
       {displayedMovies}
     </div>
