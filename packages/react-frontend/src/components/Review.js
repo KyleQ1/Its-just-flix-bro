@@ -1,24 +1,11 @@
 import React from "react";
 import Ratings from "./Ratings";
 import userLogo from "../assets/account-icon.png";
-import { Form, useParams } from "react-router-dom";
 import "./Review.css";
 
 function Review(props) {
 
   const [reviewData, setReviewData] = React.useState({title: "", text: "", rating: 3});
-
-  function updateReview(review) {
-    postReview(review)
-      .then((res) => res.status === 201 ? res.json() : undefined)
-      .then((json) => {
-        if (json); /*add review to database*/
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
-  }
 
   function postReview(review) {
     const promise = fetch(`http://localhost:8000/review`, {
@@ -31,22 +18,30 @@ function Review(props) {
     return promise;
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     postReview(
       { 
         movieId: props.movieId,
         userId: props.userId,
         reviewText: reviewData.text,
         reviewTitle: reviewData.title,
-        rating: props.rating
+        rating: reviewData.rating
       })
-        .then((res) => res.status === 201 ? res.json() : undefined)
+        .then((res) => {
+          if (res.status === 201)
+            return res.json();
+          else
+            throw new Error(`${res.status}`);
+        })
         .then((json) => {
-          if (json) props.setter(...props.getter, json);
+          if (json) props.setter([...props.getter, json]);
+          console.log(json);
         })
         .catch((error) => {
           console.log(error);
         })
+        
   }
 
   return (
@@ -67,10 +62,6 @@ function Review(props) {
           onChange={(e) => setReviewData({ ...reviewData, text: e.target.value })}/>
         <button type="submit">Submit</button>
           </form>
-      {/* <textarea id="text" placeholder="Write review"></textarea>
-      <div id="review-button">
-        <button onClick={() => props.setSubmitted(true)}>Submit</button>
-      </div> */}
     </div>
   );
 }

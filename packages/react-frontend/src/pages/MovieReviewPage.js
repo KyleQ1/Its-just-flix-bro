@@ -73,7 +73,7 @@ function MovieReviewPage(props) {
         <div className="moviepage-release">{movie.releaseDate}</div>
       </div>
       <div className="movie-reviews">
-        {reviews.map((review) => (
+        {reviews && reviews.map((review) => (
           <UserReview
             title={review.reviewTitle}
             text={review.reviewText}
