@@ -3,10 +3,10 @@ import Star from "./Star";
 import "./Review.css";
 
 function SubmittedReview(props) {
-    const numRating = props.numRating;
+    const rating = props.rating;
     let starArray = <></>;
 
-    for (let i = 0; i < numRating; i++)
+    for (let i = 0; i < rating; i++)
     {
         starArray = (
             <>
@@ -15,7 +15,7 @@ function SubmittedReview(props) {
             </>
         )
     }
-    for (let i = 0; i < 5-numRating; i++)
+    for (let i = 0; i < 5-rating; i++)
     {
         starArray = (
             <>
@@ -29,10 +29,10 @@ function SubmittedReview(props) {
         <div id="review-landing">
             <div id="review-header">
                 <img id="user-icon" src={props.user} alt="User Icon" />
-                <h1>{props.title}</h1>
+                <h1>{props.reviewTitle}</h1>
             </div>
             <div id="rating">{starArray}</div>
-            <textarea id="text" readOnly>{props.text}</textarea>
+            <textarea id="text" readOnly>{props.reviewText}</textarea>
         </div>
     )
 }

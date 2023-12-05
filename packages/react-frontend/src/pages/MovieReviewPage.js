@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Review from "../components/Review";
 import SubmittedReview from "../components/SubmittedReview";
+import SubmittedReviewContainer from "../components/SubmittedReviewContainer";
 import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
@@ -47,10 +48,7 @@ function MovieReviewPage(props) {
         <div className="moviepage-release">{movie.releaseDate}</div>
       </div>
       <div className="movie-reviews">
-        {
-          submitted ? <SubmittedReview title={movie.title}/> : <Review title={movie.title} setSubmitted={setSubmitted}/>
-        }
-        
+          <SubmittedReviewContainer />
       </div>
     </div>
   );
