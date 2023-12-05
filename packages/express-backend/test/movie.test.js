@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-import MovieModel from "../models/movie.js";
+import mongoose from "mongoose";
+import MovieModel from "../src/models/movie.js";
 
 // Mock the mongoose save method
-jest.mock('mongoose', () => ({
+/*jest.mock('mongoose', () => ({
   Schema: jest.fn(),
   model: jest.fn(),
-}));
+}));*/
 
 describe('Movie Model Tests', () => {
   test('Testing CREATE MOVIE -- SUCCESS', async () => {
