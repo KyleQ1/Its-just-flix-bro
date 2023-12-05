@@ -20,7 +20,9 @@ const Login = () => {
     <div className="login">
       <div className="login_background">
         <img className="login_logo" src={logo} alt="Netflix logo" />
-        <button className="login_button">Sign In</button>
+        <button onClick={() => setSignIn(true)} className="login_button">
+          Sign In
+        </button>
         <div className="login_gradient" />
       </div>
       <div className="login_body">

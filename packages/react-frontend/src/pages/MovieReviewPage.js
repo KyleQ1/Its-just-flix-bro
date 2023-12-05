@@ -1,31 +1,84 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import UserReview from "../components/UserReview";
 import "./MovieReviewPage.css";
 
 function MovieReviewPage(props) {
+  let { id } = useParams();
+  const [movie, setMovie] = useState({});
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    function fetchMovie() {
+      const promise = fetch(`http://localhost:8000/movie/id/${id}`);
+      return promise;
+    }
+
+    function fetchReview(reviewId) {
+      const promise = fetch(`http://localhost:8000/review/${reviewId}`);
+      return promise;
+    }
+
+    fetchMovie()
+      .then((res) => {
+        if (res.status === 404 || res.status === 500) {
+          throw new Error(`GET failed, status code ${res.status}`);
+        } else {
+          return res.json();
+        }
+      })
+      .then((json) => {
+        setMovie(json);
+        return json.reviews;
+      })
+      .then((reviews) => {
+        const fetchReviewPromises = reviews.map((review) => {
+          return fetchReview(review._id.toString())
+            .then((res) => {
+              if (res.status === 404 || res.status === 500) {
+                throw new Error(`GET failed, status code ${res.status}`);
+              } else {
+                return res.json();
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        });
+        return Promise.all(fetchReviewPromises);
+      })
+      .then((fetchedReviews) => {
+        setReviews(fetchedReviews);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+
+  console.log(reviews);
   return (
-    <div id="landing">
-      <div id="movie-background">
-        <Header />
-        <h2>{/*props.title*/}title</h2>
+    <div className="movie-page">
+      <Header />
+      <div className="moviepage-background">
+        <img src={movie.image} alt={movie.title} className="moviepage-image" />
       </div>
-      <div id="review-body">
-        <div id="movie-info">
-          <div id="popularity">
-            <h4>1</h4>
-            <h4>2</h4>
-            <h4>3</h4>
-            <h4>4</h4>
-            <h4>5</h4>
-          </div>
-          <div id="genre">genre</div>
-          <div id="description">description</div>
-          <div id="release">release date</div>
+      <div className="moviepage-details">
+        <div className="moviepage-title">{movie.title}</div>
+        <div className="moviepage-genre">
+          {movie.genres && movie.genres.join(", ")}
         </div>
-        <div id="movie-reviews">
-          <h1>Review</h1>
-          <button>Submit Review</button>
-        </div>
+        <div className="moviepage-description">{movie.description}</div>
+        <div className="moviepage-release">{movie.releaseDate}</div>
+      </div>
+      <div className="movie-reviews">
+        {reviews.map((review) => (
+          <UserReview
+            title={review.reviewTitle}
+            text={review.reviewText}
+            rating={review.rating}
+          />
+        ))}
       </div>
     </div>
   );

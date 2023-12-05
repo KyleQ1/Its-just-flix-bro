@@ -8,10 +8,45 @@ const router = express.Router();
 // Create Review Endpoint (POST)
 router.post("/", async (req, res) => {
   try {
+<<<<<<< HEAD
     const review = await Review.createReview(req.body);
     res.status(201).json(review);
   } catch (error) {
     res.status(500).json({ error: error.message });
+=======
+    console.log(req.body);
+    const { movieId, userId, reviewText, reviewTitle, rating } = req.body;
+
+    // Check if movie and user exist
+    console.log(movieId, userId);
+    const movie = await Movie.findById(movieId);
+    const user = await User.findById(userId);
+
+    if (!movie || !user) {
+      return res.status(404).json({ error: "Movie or user not found" });
+    }
+
+    const review = new Review({
+      movie: movieId,
+      user: userId,
+      reviewText,
+      reviewTitle,
+      rating,
+    });
+
+    const savedReview = await review.save();
+
+    // Update movie and user documents with the new review ID
+    movie.reviews.push(savedReview._id);
+    user.reviews.push(savedReview._id);
+
+    await Promise.all([movie.save(), user.save()]);
+
+    res.status(201).json(savedReview);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to create review" });
+>>>>>>> origin/main
   }
 });
 
@@ -30,7 +65,14 @@ router.delete("/:reviewId", async (req, res) => {
 router.get("/:reviewId", async (req, res) => {
   const reviewId = req.params.reviewId;
   try {
+<<<<<<< HEAD
     const review = await Review.getReviewById(reviewId);
+=======
+    const review = await Review.findById(reviewId);
+    if (!review) {
+      return res.status(404).json({ error: "Review not found" });
+    }
+>>>>>>> origin/main
     res.json(review);
   } catch (error) {
     res.status(500).json({ error: error.message });

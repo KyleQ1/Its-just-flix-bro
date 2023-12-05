@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "./Carousel";
-import { Link } from "react-router-dom";
 
 function MovieList(props) {
   const effectRan = React.useRef(false);
@@ -39,9 +38,7 @@ function MovieList(props) {
   return (
     <div>
       <div id="movie-genre">
-        <Link to={"/movie"}>
-          <h1>{props.genre}</h1>
-        </Link>
+        <h1>{props.genre}</h1>
       </div>
       <div id="movie-list">
         <Carousel movies={movies} />

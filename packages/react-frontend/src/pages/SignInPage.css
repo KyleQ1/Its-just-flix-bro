@@ -25,32 +25,42 @@
 .signin > form > button {
   padding: 16px 20px;
   background-color: #e50914;
-  color: white;
   border: none;
   border-radius: 5px;
-  color: e50914;
+  color: white;
   font-size: 1rem;
   font-weight: 600;
   margin-top: 20px;
   cursor: pointer;
 }
 
+.signin > form > span {
+  margin-bottom: 6px;
+  text-decoration: underline;
+}
+
 .signin_error {
   color: red;
-  margin-bottom: 10px;
-  text-decoration: underline;
+}
+
+.signin_success {
+  color: green;
 }
 
 .signin_gray {
   color: gray;
 }
 
+.signin_link {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
 .signin_link:hover {
   cursor: pointer;
   text-decoration: underline;
-}
-
-.NewUser {
-  display: flex;
-  height: 30px;
 }
