@@ -41,28 +41,47 @@ const movieSchema = new mongoose.Schema(
 
 movieSchema.statics.createMovie = async function (data) {
   try {
+    const requiredFields = ['title', 'description', 'image', 'genres', 'popularity', 'releaseDate'];
+
+    // Check if all required fields are present in the data
+    const missingFields = requiredFields.filter(field => !data[field]);
+    
+    if (missingFields.length > 0) {
+      throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
+    }
     const movie = new this(data);
-    await movie.save();
     return movie;
   } catch (error) {
-    throw new Error("Failed to create movie");
+    throw new Error(`Failed to create movie: ${error.message}`);
   }
 };
+
 
 movieSchema.statics.deleteMovie = async function (movieId) {
   try {
-    const movie = await this.findByIdAndDelete(movieId);
-    if (!movie) {
+    // Find the movie without actually fetching it
+    const movie = new this({ _id: movieId });
+
+    // Check if the movieId is valid (e.g., a valid ObjectId)
+    if (!movieId || !movie._id) {
+      throw new Error("Invalid movieId");
+    }
+
+    // Delete the movie without fetching it
+    const deleteResult = await this.deleteOne({ _id: movieId });
+
+    if (deleteResult.deletedCount === 0) {
       throw new Error("Movie not found");
     }
+
     // Delete associated reviews
     await Review.deleteMany({ movie: movieId });
+
     return { message: "Movie and associated reviews deleted successfully" };
   } catch (error) {
-    throw new Error("Failed to delete movie");
+    throw new Error(`Failed to delete movie: ${error.message}`);
   }
 };
-
 movieSchema.statics.getMovieById = async function (movieId) {
   try {
     const movie = await this.findById(movieId).populate("reviews.review");
