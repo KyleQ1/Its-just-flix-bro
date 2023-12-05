@@ -1,6 +1,7 @@
 #review-landing {
   width: 100%;
   background-color: grey;
+  border-radius: 8px;
 }
 
 #review-header {
@@ -36,4 +37,9 @@
   position: relative;
   flex-direction: row-reverse;
   right: 10vw;
+}
+
+#review-text {
+  position: relative;
+  left: 15vw;
 }

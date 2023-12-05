@@ -51,16 +51,18 @@ function Review(props) {
       </div>
       <Ratings />
       <form onSubmit={handleSubmit}>
-        <h3>Title</h3>
-        <input 
+        <h3>{props.title}</h3>
+        {/* <input 
           type="title" 
           placeholder="review title"
-          onChange={(e) => setReviewData({ ...reviewData, title: e.target.value })}/>
-        <input 
-          type="text" 
-          placeholder="review text"
-          onChange={(e) => setReviewData({ ...reviewData, text: e.target.value })}/>
-        <button type="submit">Submit</button>
+          onChange={(e) => setReviewData({ ...reviewData, title: e.target.value })}/> */}
+        <div id="review-text">
+          <textarea
+            style={{width: "50vw", height: "20vh"}} 
+            placeholder="review text"
+            onChange={(e) => setReviewData({ ...reviewData, text: e.target.value })}/>
+          <button type="submit">Submit</button>
+        </div>
           </form>
     </div>
   );

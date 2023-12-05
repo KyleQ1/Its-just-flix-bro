@@ -82,7 +82,7 @@ function MovieReviewPage(props) {
         ))}
       </div>
       <div className="review-form">
-          <Review movieId={id} userId="656a3458117829165fa805f8" setter={setReviews} getter={reviews}/>
+          <Review title={movie.title} movieId={id} userId="656a3458117829165fa805f8" setter={setReviews} getter={reviews}/>
       </div>
     </div>
   );
