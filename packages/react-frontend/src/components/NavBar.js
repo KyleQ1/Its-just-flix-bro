@@ -12,10 +12,13 @@ function NavBar() {
   const handleSearchIconHover = () => {
     setIsSearchExpanded(true);
   };
-
-  const handleSearchBlur = () => {
+  /*
+  Search blur causes the click to not register when clicking an 
+  item in the search results.
+  const handleSearchBlur = (e) => {
     setIsSearchExpanded(false);
   };
+  */
 
   return (
     <div id="navigational-bar">
@@ -28,7 +31,7 @@ function NavBar() {
           <button>Movies</button>
         </div>
       </div>
-      <div id="search-and-account" onBlur={handleSearchBlur}>
+      <div id="search-and-account">
         {isSearchExpanded && <Search />}
         <img
           id="nav-bar-img"
