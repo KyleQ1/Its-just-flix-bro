@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "./Carousel";
-import { Link } from "react-router-dom";
 
 function MovieList(props) {
   const effectRan = React.useRef(false);
