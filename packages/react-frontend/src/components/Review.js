@@ -36,12 +36,11 @@ function Review(props) {
         })
         .then((json) => {
           if (json) props.setter([...props.getter, json]);
-          console.log(json);
         })
         .catch((error) => {
           console.log(error);
         })
-        
+    props.setSubmitted(true);
   }
 
   return (
@@ -60,8 +59,8 @@ function Review(props) {
           <textarea
             style={{width: "50vw", height: "20vh"}} 
             placeholder="review text"
-            onChange={(e) => setReviewData({ ...reviewData, text: e.target.value })}/>
-          <button type="submit">Submit</button>
+            onChange={(e) => setReviewData({ ...reviewData, title: props.title, text: e.target.value })}/>
+          <button style={{height: "5vh"}} type="submit">Submit</button>
         </div>
           </form>
     </div>

@@ -9,6 +9,7 @@ function MovieReviewPage(props) {
   let { id } = useParams();
   const [movie, setMovie] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     function fetchMovie() {
@@ -81,9 +82,19 @@ function MovieReviewPage(props) {
           />
         ))}
       </div>
-      <div className="review-form">
-          <Review title={movie.title} movieId={id} userId="656a3458117829165fa805f8" setter={setReviews} getter={reviews}/>
-      </div>
+      {
+        submitted ? <></> : 
+        <div className="review-form">
+          <Review
+            title={movie.title}
+            movieId={id}
+            userId="656a3458117829165fa805f8"
+            setter={setReviews}
+            getter={reviews}
+            setSubmitted={setSubmitted}
+          />
+        </div>
+      }
     </div>
   );
 }

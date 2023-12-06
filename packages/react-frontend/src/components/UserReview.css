@@ -25,4 +25,10 @@
 
 .rating {
   font-weight: bold;
+  display: flex;
+  width: 25vw;
+}
+
+.rating svg {
+  stroke: white;
 }
