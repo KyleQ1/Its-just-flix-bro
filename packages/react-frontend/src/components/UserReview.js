@@ -7,24 +7,22 @@ const UserReview = ({ title, text, rating }) => {
   let starArray = <></>;
 
   // display gold stars
-  for (let i = 0; i < rating; i++)
-  {
-      starArray = (
-          <>
-              {starArray}
-              <Star clicked={true} />
-          </>
-      )
+  for (let i = 0; i < rating; i++) {
+    starArray = (
+      <>
+        {starArray}
+        <Star clicked={true} />
+      </>
+    );
   }
   // display remaining outlined stars
-  for (let i = 0; i < 5-rating; i++)
-  {
-      starArray = (
-          <>
-              {starArray}
-              <Star clicked={false} />
-          </>
-      )
+  for (let i = 0; i < 5 - rating; i++) {
+    starArray = (
+      <>
+        {starArray}
+        <Star clicked={false} />
+      </>
+    );
   }
   return (
     <div className="review-container">

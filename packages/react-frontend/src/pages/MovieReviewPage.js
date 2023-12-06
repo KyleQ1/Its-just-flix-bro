@@ -74,16 +74,18 @@ function MovieReviewPage() {
         <div className="moviepage-release">{movie.releaseDate}</div>
       </div>
       <div className="movie-reviews">
-        {reviews && reviews.map((review) => (
-          <UserReview
-            title={review.reviewTitle}
-            text={review.reviewText}
-            rating={review.rating}
-          />
-        ))}
+        {reviews &&
+          reviews.map((review) => (
+            <UserReview
+              title={review.reviewTitle}
+              text={review.reviewText}
+              rating={review.rating}
+            />
+          ))}
       </div>
-      {
-        submitted ? <></> : 
+      {submitted ? (
+        <></>
+      ) : (
         <div className="review-form">
           <Review
             title={movie.title}
@@ -94,7 +96,7 @@ function MovieReviewPage() {
             setSubmitted={setSubmitted}
           />
         </div>
-      }
+      )}
     </div>
   );
 }
