@@ -5,7 +5,6 @@ import MovieModel from "../src/models/movie.js";
 describe('Movie Model CREATE Tests', () => {
   test('Testing CREATE MOVIE -- SUCCESS', async () => {
     
-    // Mock the movie data
     const movieData = {
       title: 'Test Movie1234',
       description: 'A test movie',
@@ -15,11 +14,9 @@ describe('Movie Model CREATE Tests', () => {
       releaseDate: '2023-01-01',
       reviews: [],
     };
-    // Perform the test
     const result = await MovieModel.createMovie(movieData);
-    // Assertions
     expect(result instanceof MovieModel).toBeTruthy();
-  });
+  }, 20000);
 
   test('Testing CREATE MOVIE -- ERROR', async () => {
     const invalidMovieData = {};
@@ -30,7 +27,6 @@ describe('Movie Model CREATE Tests', () => {
 
 describe('Movie Model DELETE Tests', () => {
   test('Testing DELETE MOVIE -- SUCCESS', async () => {
-    // Mock the movie data
     const movieData = {
       title: 'Test Movie',
       description: 'A test movie',
@@ -40,8 +36,6 @@ describe('Movie Model DELETE Tests', () => {
       releaseDate: '2023-01-01',
       reviews: [],
     };
-
-    // Create the mock movie
     const createdMovie = await MovieModel.createMovie(movieData);
 
     // Attempt to delete the movie

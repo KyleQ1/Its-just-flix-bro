@@ -20,8 +20,7 @@ router.get("/", async (req, res) => {
 // Create Movie Endpoint (POST)
 router.post("/", async (req, res) => {
   try {
-    const movie = new Movie(req.body);
-    await movie.save();
+    const movie = await Movie.createMovie(req.body);
     console.log("Success posted movie: ", req.body);
     res.status(201).json(movie);
   } catch (error) {

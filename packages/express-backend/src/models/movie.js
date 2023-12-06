@@ -50,6 +50,7 @@ movieSchema.statics.createMovie = async function (data) {
       throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
     }
     const movie = new this(data);
+    await movie.save();  
     return movie;
   } catch (error) {
     throw new Error(`Failed to create movie: ${error.message}`);

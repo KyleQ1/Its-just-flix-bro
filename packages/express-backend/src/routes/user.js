@@ -7,10 +7,6 @@ const router = express.Router();
 
 router.post("/register", async (req, res) => {
   try {
-<<<<<<< HEAD
-    const result = await User.createUser(req.body);
-    res.json(result);
-=======
     console.log(req.body);
     const { email, password } = req.body;
 
@@ -30,7 +26,6 @@ router.post("/register", async (req, res) => {
       console.log("User created successfully", user);
       res.json({ message: "User created successfully", token: token });
     });
->>>>>>> origin/main
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
