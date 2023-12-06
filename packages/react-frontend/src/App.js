@@ -21,9 +21,9 @@ function App() {
           <Route
             path="/"
             element={
-              //<RequireAuth loginPath={"login"}>
+              <RequireAuth loginPath={"login"}>
                 <HomePage />
-              //</RequireAuth>
+              </RequireAuth>
             }
           />
           <Route path="submitted-review" element={<SubmittedReview />} />
