@@ -20,21 +20,12 @@ router.get("/", async (req, res) => {
 // Create Movie Endpoint (POST)
 router.post("/", async (req, res) => {
   try {
-    const { title, description, image, genres, popularity, releaseDate } =
-      req.body;
-    const movie = new Movie({
-      title,
-      description,
-      image,
-      genres,
-      popularity,
-      releaseDate,
-    });
+    const movie = new Movie(req.body);
     await movie.save();
     console.log("Success posted movie: ", req.body);
     res.status(201).json(movie);
   } catch (error) {
-    res.status(500).json({ error: "Failed to create movie" });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -42,15 +33,10 @@ router.post("/", async (req, res) => {
 router.delete("/id/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   try {
-    const movie = await Movie.findByIdAndDelete(movieId);
-    if (!movie) {
-      return res.status(404).json({ error: "Movie not found" });
-    }
-    // Delete associated reviews
-    await Review.deleteMany({ movie: movieId });
-    res.json({ message: "Movie and associated reviews deleted successfully" });
+    const result = await Movie.deleteMovie(movieId);
+    res.json(result);
   } catch (error) {
-    res.status(500).json({ error: "Failed to delete movie" });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -58,13 +44,10 @@ router.delete("/id/:movieId", async (req, res) => {
 router.get("/id/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   try {
-    const movie = await Movie.findById(movieId).populate("reviews.review");
-    if (!movie) {
-      return res.status(404).json({ error: "Movie not found" });
-    }
+    const movie = await Movie.getMovieById(movieId);
     res.json(movie);
   } catch (error) {
-    res.status(500).json({ error: "Failed to get movie" });
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -72,29 +55,10 @@ router.get("/id/:movieId", async (req, res) => {
 router.put("/:movieId", async (req, res) => {
   const movieId = req.params.movieId;
   try {
-    const updatedMovieData = req.body;
-    const existingMovie = await Movie.findById(movieId);
-
-    if (!existingMovie) {
-      return res.status(404).json({ error: "Movie not found" });
-    }
-
-    existingMovie.title = updatedMovieData.title || existingMovie.title;
-    existingMovie.description =
-      updatedMovieData.description || existingMovie.description;
-    existingMovie.image = updatedMovieData.image || existingMovie.image;
-    existingMovie.genres = updatedMovieData.genres || existingMovie.genres;
-    existingMovie.popularity =
-      updatedMovieData.popularity || existingMovie.popularity;
-    existingMovie.releaseDate =
-      updatedMovieData.releaseDate || existingMovie.releaseDate;
-    existingMovie.reviews = updatedMovieData.reviews || existingMovie.reviews;
-
-    const updatedMovie = await existingMovie.save();
-
+    const updatedMovie = await Movie.updateMovieById(movieId, req.body);
     res.status(200).json(updatedMovie);
-  } catch (err) {
-    res.status(500).json({ error: "Internal Server Error" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -102,39 +66,20 @@ router.put("/:movieId", async (req, res) => {
 router.get("/genre/:genre", async (req, res) => {
   try {
     const genre = req.params.genre;
-
-    // Find movies with the specified genre
-    const movies = await Movie.find({ genres: genre });
-
-    if (movies.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No movies found for the specified genre." });
-    }
-
+    const movies = await Movie.getMoviesByGenre(genre);
     res.json(movies);
   } catch (error) {
-    console.error("Error fetching movies by genre:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ error: error.message });
   }
 });
 
 // Get movies in descending popularity (GET)
 router.get("/popular", async (req, res) => {
   try {
-    // Find movies with the specified genre
-    const movies = await Movie.find().sort({ popularity: -1 }).limit(50);
-
-    if (movies.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No movies found for the specified genre." });
-    }
-
-    res.json(movies);
+    const popularMovies = await Movie.getPopularMovies();
+    res.json(popularMovies);
   } catch (error) {
-    console.error("Error fetching movies by genre:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(500).json({ error: error.message });
   }
 });
 
