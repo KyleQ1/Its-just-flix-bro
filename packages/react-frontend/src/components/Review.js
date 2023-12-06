@@ -4,8 +4,8 @@ import userLogo from "../assets/account-icon.png";
 import "./Review.css";
 
 function Review(props) {
-
   const [reviewData, setReviewData] = React.useState({title: "", text: "", rating: 3});
+  const [rating, setRating] = React.useState(3);
 
   function postReview(review) {
     const promise = fetch(`http://localhost:8000/review`, {
@@ -48,18 +48,14 @@ function Review(props) {
       <div id="review-header">
         <img id="user-icon" src={userLogo} alt="User Icon" />
       </div>
-      <Ratings />
+      <Ratings setRating={setRating}/>
       <form onSubmit={handleSubmit}>
         <h3>{props.title}</h3>
-        {/* <input 
-          type="title" 
-          placeholder="review title"
-          onChange={(e) => setReviewData({ ...reviewData, title: e.target.value })}/> */}
         <div id="review-text">
           <textarea
             style={{width: "50vw", height: "20vh"}} 
             placeholder="review text"
-            onChange={(e) => setReviewData({ ...reviewData, title: props.title, text: e.target.value })}/>
+            onChange={(e) => setReviewData({ ...reviewData, title: props.title, text: e.target.value , rating: rating})}/>
           <button style={{height: "5vh"}} type="submit">Submit</button>
         </div>
           </form>

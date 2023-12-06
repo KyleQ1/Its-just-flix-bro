@@ -2,7 +2,7 @@ import React from "react";
 import "./Ratings.css";
 import Star from "./Star";
 
-function Ratings() {
+function Ratings(props) {
   const [clicked1, setClicked1] = React.useState(false);
   const [clicked2, setClicked2] = React.useState(false);
   const [clicked3, setClicked3] = React.useState(false);
@@ -44,6 +44,7 @@ function Ratings() {
         setClickeds[i][1](newVal);
       }
     }
+    props.setRating(num);
   };
 
   return (

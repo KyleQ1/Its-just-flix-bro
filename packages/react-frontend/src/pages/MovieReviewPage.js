@@ -5,7 +5,7 @@ import Review from "../components/Review";
 import UserReview from "../components/UserReview";
 import "./MovieReviewPage.css";
 
-function MovieReviewPage(props) {
+function MovieReviewPage() {
   let { id } = useParams();
   const [movie, setMovie] = useState({});
   const [reviews, setReviews] = useState([]);
