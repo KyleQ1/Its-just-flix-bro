@@ -6,6 +6,7 @@ import ProfilePage from "./pages/ProfilePage";
 import MovieReviewPage from "./pages/MovieReviewPage";
 import Login from "./pages/LoginPage";
 import SubmittedReview from "./components/SubmittedReview";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
@@ -16,14 +17,15 @@ function App() {
       cookieSecure={window.location.protocol === "https:"}
     >
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="login" element={<Login />} />
           <Route
             path="/"
             element={
-              <RequireAuth loginPath={"login"}>
+              //<RequireAuth loginPath={"login"}>
                 <HomePage />
-              </RequireAuth>
+              //</RequireAuth>
             }
           />
           <Route path="submitted-review" element={<SubmittedReview />} />
