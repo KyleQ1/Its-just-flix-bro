@@ -12,7 +12,7 @@ const port = 8000;
 app.use(cors());
 app.use(express.json());
 
-dotenv.config({ path: ".env.local" });
+dotenv.config();
 
 const connection_url = process.env.MONGO_URI;
 
