@@ -18,9 +18,12 @@ if (result.error) {
 }
 
 const envError = (environment) => {
-  console.error("Error loading " + environment + " variable from .env.local file:", result.error);
+  console.error(
+    "Error loading " + environment + " variable from .env.local file:",
+    result.error,
+  );
   process.exit(1);
-}
+};
 
 const connection_url = process.env.MONGO_URI;
 if (!connection_url) {
