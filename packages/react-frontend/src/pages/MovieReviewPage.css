@@ -5,7 +5,6 @@
   justify-content: flex-start;
   background-color: #141414;
   color: white;
-  height: 130vh;
 }
 
 .moviepage-background {
@@ -59,7 +58,12 @@
 .movie-reviews {
   overflow-y: scroll;
   flex-direction: column;
-  height: 40vh;
+  width: 80vw;
+  margin: 10px;
+}
+
+.review-form {
+  display: flex;
   width: 80vw;
   margin: 10px;
 }

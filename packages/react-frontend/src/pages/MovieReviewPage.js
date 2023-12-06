@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Review from "../components/Review";
 import UserReview from "../components/UserReview";
 import "./MovieReviewPage.css";
 
-function MovieReviewPage(props) {
+function MovieReviewPage() {
   let { id } = useParams();
   const [movie, setMovie] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     function fetchMovie() {
@@ -72,7 +74,7 @@ function MovieReviewPage(props) {
         <div className="moviepage-release">{movie.releaseDate}</div>
       </div>
       <div className="movie-reviews">
-        {reviews.map((review) => (
+        {reviews && reviews.map((review) => (
           <UserReview
             title={review.reviewTitle}
             text={review.reviewText}
@@ -80,6 +82,19 @@ function MovieReviewPage(props) {
           />
         ))}
       </div>
+      {
+        submitted ? <></> : 
+        <div className="review-form">
+          <Review
+            title={movie.title}
+            movieId={id}
+            userId="656a3458117829165fa805f8"
+            setter={setReviews}
+            getter={reviews}
+            setSubmitted={setSubmitted}
+          />
+        </div>
+      }
     </div>
   );
 }

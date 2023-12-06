@@ -1,3 +1,9 @@
+#review-landing {
+  width: 100%;
+  background-color: grey;
+  border-radius: 8px;
+}
+
 #review-header {
   display: flex;
   align-items: center;
@@ -31,4 +37,12 @@
   position: relative;
   flex-direction: row-reverse;
   right: 10vw;
+}
+
+#review-text {
+  display: inline-flex;
+  flex-direction: column;
+  row-gap: 10px;
+  position: relative;
+  left: 15vw;
 }
