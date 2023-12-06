@@ -1,0 +1,35 @@
+.movie_search_card {
+  display: flex;
+  align-items: center;
+  width: 400px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.movie_search_card:hover {
+  transform: scale(1.1);
+}
+
+.movie_search_items {
+  display: flex;
+  align-items: center;
+}
+
+.movie_search_card_image {
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.movie_search_card_text {
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}

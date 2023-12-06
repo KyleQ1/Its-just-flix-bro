@@ -22,9 +22,12 @@
 }
 
 #nav-bar-img {
+  margin-top: 5px;
   width: 8.5vh;
   height: auto;
   object-fit: contain;
+  color: white;
+  cursor: pointer;
 }
 
 /* TODO: Add css back for a element */
@@ -45,7 +48,6 @@
 
 #nav-bar {
   display: flex;
-  align-items: center;
   column-gap: 3vh;
 }
 
@@ -62,6 +64,7 @@
 #search-and-account {
   column-gap: 10px;
   margin-right: 20px;
+  display: flex;
 }
 
 #movie-list {

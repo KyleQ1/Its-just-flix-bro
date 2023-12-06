@@ -14,8 +14,7 @@ app.use(express.json());
 
 dotenv.config({ path: ".env.local" });
 
-const connection_url =
-  "mongodb+srv://newUser:newPassword@cluster0.g8i3gad.mongodb.net/FlixDB?retryWrites=true&w=majority";
+const connection_url = process.env.MONGO_URI;
 
 mongoose
   .connect(connection_url, {

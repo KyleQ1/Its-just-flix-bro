@@ -1,0 +1,10 @@
+.search > input {
+  padding: 1rem;
+  height: 1rem;
+  width: 90%;
+  border-color: white;
+  color: rgb(207, 207, 207);
+  background-color: rgba(0, 0, 0, 0.75);
+  margin-right: 10rem;
+  margin-top: 12px;
+}
