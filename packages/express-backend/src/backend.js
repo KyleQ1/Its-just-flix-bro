@@ -31,6 +31,6 @@ app.use("/movie", movieRouter);
 app.use("/review", reviewRouter);
 app.use("/user", userRouter);
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
