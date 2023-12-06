@@ -21,7 +21,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to FlixDB"))
-  .catch((error) => console.log(error));
+  .catch((error) => console.log(error, connection_url));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -32,5 +32,5 @@ app.use("/review", reviewRouter);
 app.use("/user", userRouter);
 
 app.listen(process.env.PORT || port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Flix API listening.`);
 });
