@@ -12,31 +12,9 @@ const port = 8000;
 app.use(cors());
 app.use(express.json());
 
-const result = dotenv.config({ path: ".env.local" });
-if (result.error) {
-  console.error("Error loading .env.local file:", result.error);
-}
-
-const envError = (environment) => {
-  console.error(
-    "Error loading " + environment + " variable from .env.local file:",
-    result.error,
-  );
-  process.exit(1);
-};
+const result = dotenv.config();
 
 const connection_url = process.env.MONGO_URI;
-if (!connection_url) {
-  envError("MONGO_URI");
-}
-
-if (!process.env.JWT_SECRET) {
-  envError("JWT_SECRET");
-}
-
-if (!process.env.PORT) {
-  envError("PORT");
-}
 
 mongoose
   .connect(connection_url, {
