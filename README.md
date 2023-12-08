@@ -22,6 +22,10 @@ Run npm install from packages/express-backend, then npm start.
 
 Run npm install from packages/react-frontend, then npm start.
 
+
+## Testing
+
+Run `npx cypress test` from packages/react-frontend to open the tests. Select e2e and google chrome. Click on login.cy.js to see tests run. Learn more [here](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test).
 ## Linter
 
 npx prettier . --write
