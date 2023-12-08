@@ -8,11 +8,7 @@ For movie and tv watchers who want to read & write reviews, “It’s Just Flix,
 
 # UML Diagram
 
-![uml](https://github.com/KyleQ1/Its-just-flix-bro/assets/102489587/511f0bbd-34ea-4842-9e4e-863af5e7db2c)
-
-[It's Just Flix, Bro UML](https://docs.google.com/document/d/1ooUqYj7PsnQQRAP-2vJvGBsUlYptZzbrD936UwLtEYs/edit?usp=sharing)
-
-Last updated: November 3, 2023
+[UML](https://github.com/KyleQ1/Its-just-flix-bro/wiki/UML-Diagram)
 
 # UI Prototype
 
