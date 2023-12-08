@@ -52,3 +52,99 @@ describe('Movie Model DELETE Tests', () => {
       .rejects.toThrowError('Movie not found');
   });
 });
+
+describe('Movie Model GET Tests', () => {
+  test('Testing GET MOVIE -- SUCCESS', async () => {
+    
+    const movieData = {
+      title: 'Test Movie1234',
+      description: 'A test movie',
+      image: 'test-image.jpg',
+      genres: ['Action', 'Adventure'],
+      popularity: 8.5,
+      releaseDate: '2023-01-01',
+      reviews: [],
+    };
+  const result = await MovieModel.createMovie(movieData);
+  const movieId = result._id;
+  const getResult = await MovieModel.getMovieById(movieId);
+  expect(getResult).toBe(result);
+  }, 20000);
+
+  test('Testing GET MOVIE -- ERROR', async () => {
+    await expect(async () => await MovieModel.getMovieById(-1))
+    .rejects.toThrowError('Failed to get movie');
+  });
+});
+
+describe('Movie Model UPDATE Tests', () => {
+  test('Testing UPDATE MOVIE -- SUCCESS', async () => {
+    
+    const tempData = {
+      title: 'Test Movie1234',
+      description: 'A test movie',
+      image: 'test-image.jpg',
+      genres: ['Action', 'Adventure'],
+      popularity: 8.5,
+      releaseDate: '2023-01-01',
+      reviews: [],
+    };
+    const updateData = {
+      title: 'Update Movie1234',
+      description: 'A update movie',
+      image: 'update-image.jpg',
+      genres: ['Action', 'Adventure'],
+      popularity: 8.5,
+      releaseDate: '2023-01-01',
+      reviews: [],
+    };
+  const temp = await MovieModel.createMovie(tempData);
+  const update = await MovieModel.createMovie(updateData);
+  const movieId = temp._id;
+  const updateResult = await MovieModel.updateMovieById(movieId, updateData);
+  expect(updateResult).toBe(update);
+  }, 20000);
+
+  test('Testing UPDATE MOVIE -- ERROR', async () => {
+    const updateData = {
+      title: 'Update Movie1234',
+      description: 'A update movie',
+      image: 'update-image.jpg',
+      genres: ['Action', 'Adventure'],
+      popularity: 8.5,
+      releaseDate: '2023-01-01',
+      reviews: [],
+    };
+    await expect(async () => await MovieModel.updateMovieById(-1, updateData))
+    .rejects.toThrowError('Failed to update movie');
+  });
+
+  test('Testing UPDATE MOVIE -- ERROR', async () => {
+    await expect(async () => await MovieModel.updateMovieById(-1, -1))
+    .rejects.toThrowError('Failed to update movie');
+  });
+});
+
+describe('Movie Model GET Tests', () => {
+  test('Testing GET MOVIE -- SUCCESS', async () => {
+    
+    const movieData = {
+      title: 'Test Movie1234',
+      description: 'A test movie',
+      image: 'test-image.jpg',
+      genres: ['Action', 'Adventure'],
+      popularity: 8.5,
+      releaseDate: '2023-01-01',
+      reviews: [],
+    };
+  const result = await MovieModel.createMovie(movieData);
+  const movieId = result._id;
+  const getResult = await MovieModel.getMovieById(movieId);
+  expect(getResult).toBe(result);
+  }, 20000);
+
+  test('Testing GET MOVIE -- ERROR', async () => {
+    await expect(async () => await MovieModel.getMovieById(-1))
+    .rejects.toThrowError('Failed to get movie');
+  });
+});
