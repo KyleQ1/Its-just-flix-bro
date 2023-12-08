@@ -24,6 +24,8 @@ Last Updated: November 1st, 2023
 
 Clone this repo to your local machine.
 
+Request environment variables from one of our contributors!
+
 Run npm install from packages/express-backend, then npm start.
 
 Run npm install from packages/react-frontend, then npm start.
