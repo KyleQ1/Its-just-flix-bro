@@ -35,7 +35,10 @@ const SignInPage = () => {
           navigate("/");
         }
       })
-      .catch(() => setError(failedLogin));
+      .catch((e) => {
+        setError(failedLogin);
+        console.log(e);
+      });
   };
 
   const onRegister = (e) => {
@@ -57,7 +60,10 @@ const SignInPage = () => {
         }
       })
       .then(handleLogin)
-      .catch(() => setError(failedLogin));
+      .catch((e) => {
+        setError(failedLogin);
+        console.log(e);
+      });
   };
 
   const onSignIn = (e) => {
@@ -83,7 +89,10 @@ const SignInPage = () => {
         }
       })
       .then(handleLogin)
-      .catch(() => setError(failedLogin));
+      .catch((e) => {
+        setError(failedLogin);
+        console.log(e);
+      });
   };
 
   return (
@@ -106,7 +115,7 @@ const SignInPage = () => {
         <button type="submit">Sign In</button>
         <h4>
           <span className="signin_gray">New to Netflix? </span>
-          <button className="signin_link" i onClick={onRegister}>
+          <button className="signin_link" onClick={onRegister}>
             Sign up now.
           </button>
         </h4>
