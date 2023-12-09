@@ -28,7 +28,9 @@ Run npm install from packages/react-frontend, then npm start.
 
 ## Testing
 
-Run `npx cypress test` from packages/react-frontend to open the tests. Select e2e and google chrome. Click on login.cy.js to see tests run. Learn more [here](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test).
+First run the app following the steps above.
+
+Run `npx cypress run` or `npx cypress open` from packages/react-frontend to run tests. If using `open`, select Chrome and end to end tests from the Cypress GUI and click on our three test suites. Learn more [here](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test).
 
 ## Linter
 
