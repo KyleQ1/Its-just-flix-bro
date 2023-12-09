@@ -2,7 +2,7 @@ describe("Home page", () => {
   beforeEach(() => {
     // Assuming your home page URL is "/"
     cy.login("test@gmail.com", "test");
-    cy.visit('/');
+    cy.visit("/");
   });
 
   it("Show banner", () => {

@@ -1,7 +1,7 @@
 describe("Movie page", () => {
   beforeEach(() => {
     cy.login("test@gmail.com", "test");
-    cy.visit('/');
+    cy.visit("/");
     cy.get(".my-carousel").eq(0).find(".movie-card").eq(0).find("a").click();
     cy.get(".movie-page").should("have.be.visible");
   });
