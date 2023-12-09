@@ -1,7 +1,8 @@
 describe("Movie page", () => {
   beforeEach(() => {
     cy.login("test@gmail.com", "test");
-    cy.get(".movie-list").eq(0).find(".movie-card").eq(0).find("a").click();
+    cy.visit('/');
+    cy.get(".my-carousel").eq(0).find(".movie-card").eq(0).find("a").click();
     cy.get(".movie-page").should("have.be.visible");
   });
 
@@ -37,6 +38,6 @@ describe("Movie page", () => {
       .find("textarea")
       .type("cypress test");
     cy.get(".review-form").find("#review-text").find("button").click();
-    cy.get(".review-form").should("not.be.visible");
+    cy.get(".review-form").should("not.exist");
   });
 });

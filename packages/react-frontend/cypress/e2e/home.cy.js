@@ -1,6 +1,8 @@
 describe("Home page", () => {
   beforeEach(() => {
+    // Assuming your home page URL is "/"
     cy.login("test@gmail.com", "test");
+    cy.visit('/');
   });
 
   it("Show banner", () => {
@@ -14,12 +16,12 @@ describe("Home page", () => {
   });
 
   it("should link moviecards to moviepages", () => {
-    cy.get(".movie-list")
+    cy.get(".my-carousel")
       .eq(0)
       .find(".movie-card")
       .eq(0)
       .should("have.be.visible");
-    cy.get(".movie-list").eq(0).find(".movie-card").eq(0).find("a").click();
+    cy.get(".my-carousel").eq(0).find(".movie-card").eq(0).find("a").click();
     cy.get(".movie-page").should("have.be.visible");
   });
 });
