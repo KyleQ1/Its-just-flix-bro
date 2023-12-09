@@ -13,6 +13,12 @@ describe("Home page", () => {
 
   it("should have searchbar", () => {
     cy.get("#search-and-account").should("have.be.visible");
+    cy.get("#search-and-account").find("img").eq(0).click();
+  });
+
+  it("should link to profile page", () => {
+    cy.get("#search-and-account").find("a").click();
+    cy.get("#header").should("have.be.visible");
   });
 
   it("should link moviecards to moviepages", () => {
